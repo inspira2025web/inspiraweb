@@ -244,7 +244,7 @@
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.2s, box-shadow 0.2s;
-    color: #541C1C
+    color: #541C1C;
 }
 
 .form-input:focus,
@@ -282,8 +282,30 @@
     margin-top: 1rem;
     font-weight: 500;
 }
+  
+/* --- RESPONSIVENESS FIXES --- */
+@media (max-width: 991px) {
+    .hero .text-center-md {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+    .sub-title {
+        font-size: 2rem;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .hero {
+        padding: 60px 0;
+    }
+}
         
-       </style> 
+</style> 
 </head>
 <body class="animated-gradient text-white overflow-x-hidden">
 
@@ -308,18 +330,17 @@
 
      <section id="home" class="hero pt-20">
         <div class="container pt-5">
-            <div class="row align-items-center pt-5">
-                <div class="col-lg-6 ps-5">
-                   
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 text-center text-lg-start mb-5 mb-lg-0">
                     <h1 class="display-4 fw-bold mb-4">Inspira <br> Creative Talent Show</h1>
-                    <p class="lead mb-4"></p>
-                    <div class="d-flex gap-3">
+                    <p class="lead mb-4">A stage for the brightest talents to shine.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
                         <a href="#about" class="btn btn-outline-warning btn-lg rounded-pill px-4">Learn More</a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0">
+                <div class="col-lg-6 col-md-12">
                     <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/2VAp-FvQ9as" width="800" height="450" allowfullscreen frameborder="0"></iframe>
+                        <iframe src="https://www.youtube.com/embed/2VAp-FvQ9as" title="YouTube video player" allowfullscreen frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -330,15 +351,13 @@
      <section id="about" class="py-5">
         <div class="container">
             <h1 class="text-center section-title">About The Event</h1>
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <img src="https://placehold.co/800x600" alt="Modern conference center with glass facade and people networking in the lobby" class="img-fluid rounded shadow-lg">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <img src="https://placehold.co/800x600" alt="Modern conference center" class="img-fluid rounded shadow-lg">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-12">
                     <h3 class="sub-title">Where Ideas Meet Action</h3>
-
                     <p>Inspira is an innovative English language talent show that celebrates linguistic creativity and performance.</p>
-                    
                     <ul class="list-unstyled">
                         <li class="mb-3">
                             <div class="d-flex align-items-center">
@@ -348,13 +367,12 @@
                                 <div>Contestants showcase their skills in various categories</div>
                             </div>
                         </li>
-                        
                         <li class="mb-3">
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
                                     <i class="fas fa-check-circle text-warning fs-4"></i>
                                 </div>
-                                <div>inspire participants and audiences alike to appreciate the beauty of language</div>
+                                <div>Inspire participants and audiences alike to appreciate the beauty of language</div>
                             </div>
                         </li>
                     </ul>
@@ -363,17 +381,16 @@
         </div>
     </section>
 
-        <section id="speakers" class="py-5">
+    <section id="speakers" class="py-5">
         <div class="container">
             <h2 class="text-center section-title">Organizing committee</h2>            
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
-                    <div class="speaker-card ">
+                    <div class="speaker-card">
                         <img src="https://placehold.co/400x300" class="img-fluid">
                         <div class="p-4">
                             <h5>Sarah Johnson</h5>
                             <p class="text-primary mb-1">Event Cordinator</p>
-                            
                             <div class="d-flex">
                                 <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
@@ -384,7 +401,7 @@
                 </div>
                 
                 <div class="col-md-6 col-lg-3">
-                    <div class="speaker-card ">
+                    <div class="speaker-card">
                         <img src="https://placehold.co/400x300" class="img-fluid">
                         <div class="p-4">
                             <h5>Michael Rodriguez</h5>
@@ -400,7 +417,7 @@
                 
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card">
-                        <img src="https://placehold.co/400x300" alt="Diverse woman in creative attire presenting data visualization on a screen" class="img-fluid">
+                        <img src="https://placehold.co/400x300" alt="Priya Patel" class="img-fluid">
                         <div class="p-4">
                             <h5>Priya Patel</h5>
                             <p class="text-primary mb-1">Creative Director</p>
@@ -414,8 +431,8 @@
                 </div>
                 
                 <div class="col-md-6 col-lg-3">
-                    <div class="speaker-card ">
-                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                    <div class="speaker-card">
+                        <img src="https://placehold.co/400x300" alt="David Kim" class="img-fluid">
                         <div class="p-4">
                             <h5>David Kim</h5>
                             <p class="text-primary mb-1">Vice President</p>
@@ -430,55 +447,43 @@
             </div>
             
             <div class="text-center mt-5">
-                <a href="members.html" class="btn btn-outline-warning px-4 ">View Full Committee</a>
+                <a href="members.html" class="btn btn-outline-warning px-4">View Full Committee</a>
             </div>
         </div>
     </section>
 
     <section class="contact-section">
-    <div class="form-container">
-        
-        <h1 class="form-title">Contact Us</h1>
-        
-        <form id="contact-form" action="https://formspree.io/f/xwpolbba" method="POST">
-            
-            <div class="input-group">
-                <label for="name" class="input-label">Your Name:</label>
-                <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="email" class="input-label">Your Email Address:</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="message" class="input-label">Message:</label>
-                <textarea id="message" name="message" rows="6" class="form-textarea" placeholder="Your message here..." required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Send Message</button>
-
-            <p id="form-status"></p>
-
-        </form>
-    </div>
-</section>
+        <div class="form-container">
+            <h1 class="form-title">Contact Us</h1>
+            <form id="contact-form" action="https://formspree.io/f/xwpolbba" method="POST">
+                <div class="input-group">
+                    <label for="name" class="input-label">Your Name:</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email" class="input-label">Your Email Address:</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="message" class="input-label">Message:</label>
+                    <textarea id="message" name="message" rows="6" class="form-textarea" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <p id="form-status"></p>
+            </form>
+        </div>
+    </section>
 
     <footer class="site-footer text-gray-300 py-12">
         <div class="container mx-auto px-6 text-center">
-<<<<<<< HEAD
-            <p class="mb-2">Organizing Comiitee,INSPIRA'25</p>
-=======
             <h3 class="text-2xl font-bold mb-4 text-white">Contact Us</h3>
-            <p class="mb-2">Organizing Committee,INSPIRA'25</p>
->>>>>>> 0f0c7a178af3339c2dc42a9af67380089777cfb4
-            <p class="mb-2">Email: <a href="mailto:info@inspira2025.online" class="hover:text-orange-400">info@inspira2025.online</a>
-            </p>
-            <p>Phone: <a href="tel:+94000000000" class="hover:text-orange-400">+94 (72) 768-8334 (Event Cordinator)</a></p>
+            <p class="mb-2">Organizing Committee, INSPIRA'25</p>
+            <p class="mb-2">Email: <a href="mailto:info@inspira2025.online" class="hover:text-orange-400">info@inspira2025.online</a></p>
+            <p>Phone: <a href="tel:+94727688334" class="hover:text-orange-400">+94 (72) 768-8334 (Event Cordinator)</a></p>
             <div class="mt-6 border-t border-gray-700 pt-6">
-            <p>&copy; inspira'25. All Rights Reserved.</p>
-            <p><small>Developed By <a href="developers.html" style="text-decoration: underline; color: yellow;">Team INSPIRA</a></small></p></div>
+                <p>&copy; inspira'25. All Rights Reserved.</p>
+                <p><small>Developed By <a href="developers.html" style="text-decoration: underline; color: yellow;">Team INSPIRA</a></small></p>
+            </div>
         </div>
     </footer>
     <canvas id="interactiveCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
@@ -487,20 +492,23 @@
         // --- SCRIPT FOR LOADER ---
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
-            // Add a small delay for a smoother transition
             setTimeout(() => {
                 loader.classList.add('hidden');
-            }, 500); // 500ms delay
+            }, 500);
         });
-         // Interactive Canvas
+
+        // --- INTERACTIVE CANVAS SCRIPT ---
         const canvas = document.getElementById("interactiveCanvas");
         const ctx = canvas.getContext("2d");
         let particles = [];
-        let mouse = { x: 0, y: 0 };
+        let mouse = { x: null, y: null };
+
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
+        window.addEventListener("resize", resizeCanvas);
+
         function createParticle(x, y) {
             return {
                 x: x,
@@ -513,82 +521,66 @@
                 decay: Math.random() * 0.02 + 0.005,
             };
         }
+
         function updateParticles() {
             for (let i = particles.length - 1; i >= 0; i--) {
-                const particle = particles[i];
-                particle.x += particle.vx;
-                particle.y += particle.vy;
-                particle.life -= particle.decay;
-                particle.size *= 0.98;
-                if (particle.life <= 0 || particle.size <= 0.5) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= p.decay;
+                p.size *= 0.98;
+                if (p.life <= 0 || p.size <= 0.5) {
                     particles.splice(i, 1);
                 }
             }
         }
+
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((particle) => {
+            particles.forEach((p) => {
                 ctx.save();
-                ctx.globalAlpha = particle.life;
-                ctx.fillStyle = particle.color;
+                ctx.globalAlpha = p.life;
+                ctx.fillStyle = p.color;
                 ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.shadowBlur = 20;
-                ctx.shadowColor = particle.color;
+                ctx.shadowColor = p.color;
                 ctx.fill();
                 ctx.restore();
             });
         }
+
         function animate() {
             updateParticles();
             drawParticles();
             requestAnimationFrame(animate);
         }
+
         canvas.addEventListener("mousemove", (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
             if (Math.random() > 0.7) {
-                particles.push(createParticle(mouse.x, mouse.y));
+                particles.push(createParticle(e.clientX, e.clientY));
             }
         });
+
         canvas.addEventListener("click", (e) => {
             for (let i = 0; i < 15; i++) {
                 particles.push(createParticle(e.clientX, e.clientY));
             }
         });
-        window.addEventListener("resize", resizeCanvas);
-        setInterval(() => {
-            if (particles.length < 50) {
-                particles.push(
-                    createParticle(
-                        Math.random() * canvas.width,
-                        Math.random() * canvas.height
-                    )
-                );
-            }
-        }, 200);
+
         // Initialize
         resizeCanvas();
         animate();
-        for (let i = 0; i < 20; i++) {
-            particles.push(
-                createParticle(
-                    Math.random() * window.innerWidth,
-                    Math.random() * window.innerHeight
-                )
-            );
-        }
     </script>
     
     <script>
-        // Get the form and status elements from the DOM
+        // --- CONTACT FORM SCRIPT ---
         const form = document.getElementById("contact-form");
         const status = document.getElementById("form-status");
 
-        // Function to handle the form submission
         async function handleSubmit(event) {
-            event.preventDefault(); // Prevents the default page reload
+            event.preventDefault();
             const data = new FormData(event.target);
 
             try {
@@ -601,12 +593,10 @@
                 });
 
                 if (response.ok) {
-                    // Success
                     status.innerHTML = "Thanks for your message!";
-                    status.style.color = "#4CAF50"; // Dark Brown
-                    form.reset(); // Clear the form fields
+                    status.style.color = "#4CAF50"; // Green for success
+                    form.reset();
                 } else {
-                    // Server-side error
                     const responseData = await response.json();
                     if (Object.hasOwn(responseData, 'errors')) {
                         status.innerHTML = responseData["errors"].map(error => error["message"]).join(", ");
@@ -616,13 +606,10 @@
                     status.style.color = "red";
                 }
             } catch (error) {
-                // Network error
-                status.innerHTML = "Oops! There was a problem submitting your form.";
+                status.innerHTML = "Oops! There was a network error.";
                 status.style.color = "red";
             }
         }
-
-        // Add the submit event listener to the form
         form.addEventListener("submit", handleSubmit);
     </script>
 </body>
