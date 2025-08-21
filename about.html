@@ -194,6 +194,94 @@
             color: var(--primary);
             background-color: #F28C1A;
         }
+
+
+/* --- Contact Section Styling --- */
+.contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Makes the section take full screen height */
+    padding: 2rem;
+    font-family: sans-serif;
+    background-color: #874C1B; /* Medium Brown */
+}
+
+.form-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #541C1C; /* Dark Brown */
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #6B2E2E; /* Deep Reddish Brown */
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: #541C1C
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #B56933; /* Warm Brown */
+    box-shadow: 0 0 0 3px rgba(181, 105, 51, 0.25); /* Warm Brown with opacity */
+}
+
+.form-textarea {
+    resize: vertical; /* Allows vertical resize, not horizontal */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #874C1B; /* Medium Brown */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #6B2E2E; /* Deep Reddish Brown on hover */
+    transform: scale(1.02);
+}
+
+/* Style for the status message */
+#form-status {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 500;
+}
         
        </style> 
 </head>
@@ -279,7 +367,6 @@
         <div class="container">
             <h2 class="text-center section-title">Organizing committee</h2>            
             <div class="row g-4">
-                <!-- member 1 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card ">
                         <img src="https://placehold.co/400x300" class="img-fluid">
@@ -296,7 +383,6 @@
                     </div>
                 </div>
                 
-                <!-- member 2 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card ">
                         <img src="https://placehold.co/400x300" class="img-fluid">
@@ -312,7 +398,6 @@
                     </div>
                 </div>
                 
-                <!-- member 3 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card">
                         <img src="https://placehold.co/400x300" alt="Diverse woman in creative attire presenting data visualization on a screen" class="img-fluid">
@@ -328,7 +413,6 @@
                     </div>
                 </div>
                 
-                <!-- member 4 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card ">
                         <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
@@ -350,9 +434,39 @@
             </div>
         </div>
     </section>
+
+    <section class="contact-section">
+    <div class="form-container">
+        
+        <h1 class="form-title">Contact Us</h1>
+        
+        <form id="contact-form" action="https://formspree.io/f/xwpolbba" method="POST">
+            
+            <div class="input-group">
+                <label for="name" class="input-label">Your Name:</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="email" class="input-label">Your Email Address:</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="message" class="input-label">Message:</label>
+                <textarea id="message" name="message" rows="6" class="form-textarea" placeholder="Your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+
+            <p id="form-status"></p>
+
+        </form>
+    </div>
+</section>
+
     <footer class="site-footer text-gray-300 py-12">
         <div class="container mx-auto px-6 text-center">
-            <h3 class="text-2xl font-bold mb-4 text-white">Contact Us</h3>
             <p class="mb-2">Organizing Comiitee,INSPIRA'25</p>
             <p class="mb-2">Email: <a href="mailto:info@inspira2025.online" class="hover:text-orange-400">info@inspira2025.online</a>
             </p>
@@ -362,8 +476,8 @@
             <p><small>Developed By <a href="developers.html" style="text-decoration: underline; color: yellow;">Team INSPIRA</a></small></p></div>
         </div>
     </footer>
-    <!-- Interactive Canvas -->
     <canvas id="interactiveCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+    
     <script>
         // --- SCRIPT FOR LOADER ---
         window.addEventListener('load', () => {
@@ -460,6 +574,51 @@
                 )
             );
         }
+    </script>
+    
+    <script>
+        // Get the form and status elements from the DOM
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("form-status");
+
+        // Function to handle the form submission
+        async function handleSubmit(event) {
+            event.preventDefault(); // Prevents the default page reload
+            const data = new FormData(event.target);
+
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    status.innerHTML = "Thanks for your message!";
+                    status.style.color = "#4CAF50"; // Dark Brown
+                    form.reset(); // Clear the form fields
+                } else {
+                    // Server-side error
+                    const responseData = await response.json();
+                    if (Object.hasOwn(responseData, 'errors')) {
+                        status.innerHTML = responseData["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        status.innerHTML = "Oops! There was a problem submitting your form.";
+                    }
+                    status.style.color = "red";
+                }
+            } catch (error) {
+                // Network error
+                status.innerHTML = "Oops! There was a problem submitting your form.";
+                status.style.color = "red";
+            }
+        }
+
+        // Add the submit event listener to the form
+        form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
