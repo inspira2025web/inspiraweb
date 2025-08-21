@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Developer Team - EduWide</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+ <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+<link rel="android-chrome-icon" sizes="192x192" href="img/favicon/android-chrome-192x192.png">
+<link rel="android-chrome-icon" sizes="512x512" href="img/favicon/android-chrome-512x512.png">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+     .animated-gradient {
+            background: linear-gradient(-45deg, #541C1C, #6B2E2E, #874C1B, #541C1C);
+            background-size: 600% 600%;
+            /* Increased size for smoother movement */
+            animation: waveFlag 10s ease infinite;
+            /* New animation */
+        }
+        @keyframes waveFlag {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    .team-section {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .team-card {
+        background-color: #c2c2c2;
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px rgba(84,28,28,0.08);
+        padding: 2rem 1rem;
+        margin-bottom: 20px;
+        transition: transform 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .team-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 8px 32px rgba(84,28,28,0.16);
+        background-color: #F28C1A;
+    }
+    .team-card img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        border: 3px solid #F28C1A;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .team-icons a {
+        color: #874C1B;
+        margin: 0 6px;
+        font-size: 1.3rem;
+        transition: color 0.2s;
+    }
+    .team-icons a:hover {
+        color: #F28C1A;
+    }
+    .text-danger {
+        font-size: 0.95rem;
+    }
+    @media (max-width: 767px) {
+        .team-card {
+            padding: 1.2rem 0.5rem;
+        }
+        .team-card img {
+            width: 90px;
+            height: 90px;
+        }
+    }
+    .animated-gradient {
+        background: linear-gradient(-45deg, #541C1C, #6B2E2E, #874C1B, #541C1C);
+        background-size: 600% 600%;
+        animation: waveFlag 10s ease infinite;
+    }
+    /* Header Styles */
+    .site-header {
+        margin: 1% auto;
+        border-radius: 2rem;
+        width: 98%;
+        z-index: 1000;
+        background: rgba(84, 28, 28, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+        box-shadow: 0 2px 16px rgba(84,28,28,0.10);
+        transition: background 0.3s;
+    }
+   
+    .site-header .logo-text {
+        color: #F28C1A;
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 1.4rem;
+        transition: color 0.2s;
+    }
+   
+    .site-header .logo-img {
+        box-shadow: 0 2px 8px rgba(84,28,28,0.15);
+        transition: box-shadow 0.2s;
+    }
+  
+</style>
+</head>
+
+<body class="animated-gradient">
+
+    <header class="site-header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <img src="img/logo2.jpg" class="logo-img h-12 w-12 rounded-full object-cover border-2 border-orange-400 p-1" alt="INSPIRA Logo">
+                <span class="logo-text hidden sm:block">INSPIRA 2025</span>
+            </a>
+        </div>
+    </header>
+    <!-- Team Section -->
+    <section class="team-section container">
+        <h1 class="mb-5  fw-semibold text-center" style="font-size:2.5rem; color: #c2c2c2;">Meet Our Developer Team</h1>
+        <div class="row g-4 justify-content-center">
+            <!-- Team Member 1-->
+            <div class="col-md-3 col-sm-6">
+                <div class="team-card text-center">
+                    <img src="" alt="John Doe">
+                    <h5 class="fw-bold">John Doe</h5>
+                    <p><b>Full Stack Developer</b><br>Quality Assurance<br>System Administrator</p>
+                    <div class="team-icons">
+                        <a href="#"><i class="bi bi-globe"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member 2-->
+            <div class="col-md-3 col-sm-6">
+                <div class="team-card text-center">
+                    <img src="" alt="Jane Smith">
+                    <h5 class="fw-bold">Jane Smith</h5>
+                    <p><b>Frontend Developer</b><br>Technical Writer</p>
+                    <div class="team-icons">
+                        <a href="#"><i class="bi bi-globe"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member 3-->
+            <div class="col-md-3 col-sm-6">
+                <div class="team-card text-center">
+                    <img src="" alt="Alice Brown">
+                    <h5 class="fw-bold">Alice Brown</h5>
+                    <p><b>Frontend Developer</b><br>Business Analyst</p>
+                    <div class="team-icons">
+                        <a href="#"><i class="bi bi-globe"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member 4-->
+            <div class="col-md-3 col-sm-6">
+                <div class="team-card text-center">
+                    <img src="" alt="Bob Williams">
+                    <h5 class="fw-bold">Bob Williams</h5>
+                    <p><b>Frontend Developer</b><br>System Administrator</p>
+                    <div class="team-icons">
+                        <a href="#"><i class="bi bi-globe"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-md-3 col-sm-6">
+                <div class="team-card text-center">
+                    <img src="" alt="John Doe">
+                    <h5 class="fw-bold">John Doe</h5>
+                    <p><b>Full Stack Developer</b><br>Quality Assurance<br>System Administrator</p>
+                    <div class="team-icons">
+                        <a href="#"><i class="bi bi-globe"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-md-3 col-sm-6">
+                <div class="team-card text-center">
+                    <img src="" alt="John Doe">
+                    <h5 class="fw-bold">John Doe</h5>
+                    <p><b>Full Stack Developer</b><br>Quality Assurance<br>System Administrator</p>
+                    <div class="team-icons">
+                        <a href="#"><i class="bi bi-globe"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+           
+            <p class="mb-2">Faculty of Applied Science, Rajarata University of Sri Lanka, Mihintale</p>
+            <p class="mb-2">Email: <a href="mailto:info@inspira.com" class="hover:text-orange-400">info@inspira.com</a></p>
+            <p>Phone: <a href="tel:+94000000000" class="hover:text-orange-400">+94 (00) 000-0000</a></p>
+            <div class="mt-6 border-t border-gray-700 pt-6">
+                <p>&copy; 2025 INSPIRA. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+</body>
+
+</html>
