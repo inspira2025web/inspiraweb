@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSPIRA 2025 - The Talent Show</title>
     
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
@@ -19,18 +17,19 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Animated gradient background with the new color palette */
+        /* --- NEW: Updated background animation for a waving flag effect --- */
         .animated-gradient {
             background: linear-gradient(-45deg, #541C1C, #6B2E2E, #874C1B, #541C1C);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background-size: 600% 600%; /* Increased size for smoother movement */
+            animation: waveFlag 20s ease infinite; /* New animation */
         }
 
-        @keyframes gradientBG {
+        @keyframes waveFlag {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        /* --- END OF NEW STYLES --- */
 
         /* Keyframes for fade-in-up animation */
         @keyframes fadeInUp {
@@ -44,12 +43,6 @@
             }
         }
         
-        /* Keyframes for fade-in animation */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         /* Applying animations with delays */
         .fade-in-up-1 { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
         .fade-in-up-2 { animation: fadeInUp 0.8s 0.2s ease-out forwards; opacity: 0; }
@@ -74,44 +67,125 @@
 
         /* Custom button colors from the palette */
         .btn-zoom { background-color: #874C1B; }
-        .btn-zoom:hover { background-color: #6e3d15; } /* Darker Medium Brown */
+        .btn-zoom:hover { background-color: #6e3d15; }
         .btn-youtube { background-color: #6B2E2E; }
-        .btn-youtube:hover { background-color: #522424; } /* Darker Deep Reddish Brown */
+        .btn-youtube:hover { background-color: #522424; }
         .btn-facebook { background-color: #541C1C; }
-        .btn-facebook:hover { background-color: #3d1414; } /* Darker Dark Brown */
+        .btn-facebook:hover { background-color: #3d1414; }
+
+        /* --- STYLES FOR ADVANCED LAYOUT --- */
+
+        /* Loading Animation Styles */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-logo {
+            width: 150px;
+            height: 150px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); }
+            70% { transform: scale(1.05); }
+            100% { transform: scale(0.95); }
+        }
+
+        /* Header Styles */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(84, 28, 28, 0.5); /* Semi-transparent dark brown */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #F28C1A; /* Accent color on hover */
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #F28C1A;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Footer Styles */
+        .site-footer {
+            background-color: rgba(84, 28, 28, 0.5); /* Semi-transparent dark brown */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Page content wrapper to prevent content from hiding behind fixed header */
+        #page-content {
+            padding-top: 100px; /* Adjust based on header height */
+            padding-bottom: 100px; /* Adjust based on footer height */
+        }
     </style>
 </head>
 <body class="animated-gradient text-white overflow-x-hidden">
 
-    <div class="min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div id="loader" class="animated-gradient">
+        <img src="img/logo.png" alt="Loading Logo" class="loader-logo">
+    </div>
+
+    <header class="site-header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <img src="img/logo2.jpg" class="h-12 w-12 rounded-full object-cover border-2 border-orange-400 p-1">
+                <span class="font-bold text-xl hidden sm:block">INSPIRA 2025</span>
+            </a>
+            <nav>
+                <ul class="flex items-center space-x-8">
+                    <li><a href="#" class="nav-link font-semibold">Home</a></li>
+                    <li><a href="#" class="nav-link font-semibold">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="page-content" class="min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
         
-        <!-- Main Content Container -->
         <main class="w-full max-w-4xl mx-auto text-center flex flex-col items-center">
 
-            <!-- Your Logo: Replace the SVG code below with your own SVG file -->
-            <div class="mb-6 fade-in-up-1">
-                <!-- === PASTE YOUR SVG LOGO CODE HERE === -->
-                <svg class="h-20 w-20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 0L95.1141 27.5V82.5L50 110L4.8859 82.5V27.5L50 0Z" fill="rgba(255,255,255,0.1)"/>
-                    <path d="M50 15L84.4338 35V75L50 95L15.5662 75V35L50 15Z" stroke="#F28C1A" stroke-width="2"/>
-                    <path d="M35 50L50 42.5L65 50L50 57.5L35 50Z" fill="#F28C1A" stroke="white" stroke-width="1"/>
-                </svg>
-                <!-- === END OF SVG LOGO === -->
-            </div>
-
-            <!-- Event Title -->
             <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-wider fade-in-up-2" style="text-shadow: 0 4px 15px rgba(0,0,0,0.3);">
                 INSPIRA <span style="color: #F28C1A;">2025</span>
             </h1>
             <p class="text-xl sm:text-2xl font-semibold mt-2 text-gray-300 fade-in-up-3">The Talent Show</p>
             
-            <!-- Organizer Info -->
             <div class="mt-4 text-sm sm:text-base text-gray-400 fade-in-up-4">
                 <p>Organized by the English Speech Club 23/24</p>
                 <p>Faculty of Applied Science, Rajarata University of Sri Lanka</p>
             </div>
 
-            <!-- Countdown Timer -->
             <div id="countdown-container" class="w-full max-w-2xl mt-12 mb-12 fade-in-up-5">
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                     <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
@@ -133,20 +207,18 @@
                 </div>
             </div>
             
-            <!-- Live Stream Buttons -->
             <div class="fade-in-up-5">
                 <p class="mb-4 text-gray-300">Watch Live On</p>
                 <div class="flex flex-wrap justify-center items-center gap-4">
-                    <!-- === REPLACE '#' WITH YOUR ACTUAL LINKS === -->
-                    <a href="update.html" target="_blank" class="glow-button flex items-center gap-2 btn-zoom text-white font-bold py-2 px-5 rounded-full">
+                    <a href="#" target="_blank" class="glow-button flex items-center gap-2 btn-zoom text-white font-bold py-2 px-5 rounded-full">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.582 5.418c.98-.98 2.56-1.042 3.418-.184l.184.184c.98.98.918 2.56-.184 3.418l-1.816 1.816-3.234-3.234 1.632-1.632zM16.58 4.42l-9.898 9.898-3.264 1.26c-.48.186-.882-.216-.696-.696l1.26-3.264L14.18 1.42a2.402 2.402 0 013.4 0l-1 1zm-2 2L4.42 16.58 3 21l4.42-1.42L17.58 9.42l-3.16-3z"/></svg>
                         Zoom
                     </a>
-                    <a href="update.html" target="_blank" class="glow-button flex items-center gap-2 btn-youtube text-white font-bold py-2 px-5 rounded-full">
+                    <a href="#" target="_blank" class="glow-button flex items-center gap-2 btn-youtube text-white font-bold py-2 px-5 rounded-full">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 C3.326,4.648,2.648,5.326,2.418,6.186C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
                         YouTube
                     </a>
-                    <a href="update.html" target="_blank" class="glow-button flex items-center gap-2 btn-facebook text-white font-bold py-2 px-5 rounded-full">
+                    <a href="#" target="_blank" class="glow-button flex items-center gap-2 btn-facebook text-white font-bold py-2 px-5 rounded-full">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H8v-3h2V9.5C10,7.57,11.57,6,13.5,6H16v3h-1.5 c-0.83,0-1,0.47-1,1v2h2.5l-0.5,3H13v6.95C18.05,21.45,22,17.2,22,12z"/></svg>
                         Facebook
                     </a>
@@ -156,40 +228,50 @@
         </main>
     </div>
 
-    <script>
-        // Set the date we're counting down to
-        const countDownDate = new Date("Oct 1, 2025 00:00:00").getTime();
+    <footer class="site-footer text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold mb-4 text-white">Contact Us</h3>
+            <p class="mb-2">Faculty of Applied Science, Rajarata University of Sri Lanka, Mihintale</p>
+            <p class="mb-2">Email: <a href="mailto:info@inspira.com" class="hover:text-orange-400">info@inspira.com</a></p>
+            <p>Phone: <a href="tel:+94000000000" class="hover:text-orange-400">+94 (00) 000-0000</a></p>
+            <div class="mt-6 border-t border-gray-700 pt-6">
+                <p>&copy; 2025 INSPIRA. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        // Get elements to update
+    <script>
+        // --- SCRIPT FOR LOADER ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            // Add a small delay for a smoother transition
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 500); // 500ms delay
+        });
+
+        // --- SCRIPT FOR COUNTDOWN ---
+        const countDownDate = new Date("Oct 1, 2025 00:00:00").getTime();
         const daysEl = document.getElementById("days");
         const hoursEl = document.getElementById("hours");
         const minutesEl = document.getElementById("minutes");
         const secondsEl = document.getElementById("seconds");
         const countdownContainer = document.getElementById("countdown-container");
 
-        // Update the count down every 1 second
         const x = setInterval(function() {
-
-            // Get today's date and time
             const now = new Date().getTime();
-
-            // Find the distance between now and the count down date
             const distance = countDownDate - now;
 
-            // Time calculations for days, hours, minutes and seconds
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Display the result in the elements
-            // Add a leading zero if the number is less than 10
             daysEl.innerHTML = days < 10 ? '0' + days : days;
             hoursEl.innerHTML = hours < 10 ? '0' + hours : hours;
             minutesEl.innerHTML = minutes < 10 ? '0' + minutes : minutes;
             secondsEl.innerHTML = seconds < 10 ? '0' + seconds : seconds;
 
-            // If the count down is finished, write some text
             if (distance < 0) {
                 clearInterval(x);
                 countdownContainer.innerHTML = '<h2 class="col-span-2 sm:col-span-4 text-3xl font-bold" style="color: #F28C1A;">The Event is LIVE!</h2>';
