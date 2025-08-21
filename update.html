@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Soon!</title>
+    <!-- Include Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background - a neutral color to complement the palette */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff; /* Neutral white background */
+            padding: 2.5rem; /* Large padding */
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Soft shadow */
+            text-align: center;
+            max-width: 90%;
+            width: 400px; /* Max width */
+        }
+        h1 {
+            color: #541C1C; /* Dark Brown */
+            margin-bottom: 1.5rem;
+            font-size: 2.25rem; /* Large font size */
+            font-weight: 700; /* Bold font weight */
+        }
+        p {
+            color: #6B2E2E; /* Deep Reddish Brown */
+            margin-bottom: 2rem;
+            font-size: 1.125rem; /* Slightly larger font size */
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column; /* To stack buttons vertically */
+            gap: 1rem; /* Space between buttons */
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem; /* Rounded corners */
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            text-decoration: none; /* To remove underline from links */
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background-color: #874C1B; /* Medium Brown */
+            color: #ffffff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #B56933; /* Warm Brown */
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Soon! 🚀</h1>
+        <p>We are currently working to make this web page even better. Please come back soon!</p>
+        <div class="button-group">
+            <button onclick="history.back()" class="btn btn-primary">Go Back</button>
+            <!-- Contact developers link removed -->
+        </div>
+    </div>
+</body>
+</html>
