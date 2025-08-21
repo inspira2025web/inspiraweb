@@ -194,95 +194,15 @@
             color: var(--primary);
             background-color: #F28C1A;
         }
-
-
-/* --- Contact Section Styling --- */
-.contact-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Makes the section take full screen height */
-    padding: 2rem;
-    font-family: sans-serif;
-    background-color: #874C1B; /* Medium Brown */
-}
-
-.form-container {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 500px;
-}
-
-.form-title {
-    font-size: 2.25rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #541C1C; /* Dark Brown */
-}
-
-.input-group {
-    margin-bottom: 1.5rem;
-}
-
-.input-label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: #6B2E2E; /* Deep Reddish Brown */
-}
-
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    color: #541C1C
-}
-
-.form-input:focus,
-.form-textarea:focus {
-    outline: none;
-    border-color: #B56933; /* Warm Brown */
-    box-shadow: 0 0 0 3px rgba(181, 105, 51, 0.25); /* Warm Brown with opacity */
-}
-
-.form-textarea {
-    resize: vertical; /* Allows vertical resize, not horizontal */
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 1rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #874C1B; /* Medium Brown */
-    color: white;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.submit-btn:hover {
-    background-color: #6B2E2E; /* Deep Reddish Brown on hover */
-    transform: scale(1.02);
-}
-
-/* Style for the status message */
-#form-status {
-    text-align: center;
-    margin-top: 1rem;
-    font-weight: 500;
-}
-        
+         /* Glow effect for the button */
+        .glow-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px rgba(242, 140, 26, 0.3), 0 0 10px rgba(242, 140, 26, 0.2);
+        }
+        .glow-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(242, 140, 26, 0.6), 0 0 25px rgba(242, 140, 26, 0.4);
+        }
        </style> 
 </head>
 <body class="animated-gradient text-white overflow-x-hidden">
@@ -291,7 +211,7 @@
         <img src="assets/img/logo.png" alt="Loading Logo" class="loader-logo">
     </div>
 
-    <header class="site-header">
+    <!-- <header class="site-header">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="assets/img/logo2.jpg" class="h-12 w-12 rounded-full object-cover border-2 border-orange-400 p-1">
@@ -304,69 +224,12 @@
                 </ul>
             </nav>
         </div>
-    </header>
-
-     <section id="home" class="hero pt-20">
-        <div class="container pt-5">
-            <div class="row align-items-center pt-5">
-                <div class="col-lg-6 ps-5">
-                   
-                    <h1 class="display-4 fw-bold mb-4">Inspira <br> Creative Talent Show</h1>
-                    <p class="lead mb-4"></p>
-                    <div class="d-flex gap-3">
-                        <a href="#about" class="btn btn-outline-warning btn-lg rounded-pill px-4">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-5 mt-lg-0">
-                    <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/2VAp-FvQ9as" width="800" height="450" allowfullscreen frameborder="0"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-     <section id="about" class="py-5">
-        <div class="container">
-            <h1 class="text-center section-title">About The Event</h1>
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <img src="https://placehold.co/800x600" alt="Modern conference center with glass facade and people networking in the lobby" class="img-fluid rounded shadow-lg">
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="sub-title">Where Ideas Meet Action</h3>
-
-                    <p>Inspira is an innovative English language talent show that celebrates linguistic creativity and performance.</p>
-                    
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                    <i class="fas fa-check-circle text-warning fs-4"></i>
-                                </div>
-                                <div>Contestants showcase their skills in various categories</div>
-                            </div>
-                        </li>
-                        
-                        <li class="mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                    <i class="fas fa-check-circle text-warning fs-4"></i>
-                                </div>
-                                <div>inspire participants and audiences alike to appreciate the beauty of language</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    </header> -->
         <section id="speakers" class="py-5">
         <div class="container">
             <h2 class="text-center section-title">Organizing committee</h2>            
             <div class="row g-4">
+                <!-- member 1 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card ">
                         <img src="https://placehold.co/400x300" class="img-fluid">
@@ -383,6 +246,7 @@
                     </div>
                 </div>
                 
+                <!-- member 2 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card ">
                         <img src="https://placehold.co/400x300" class="img-fluid">
@@ -398,6 +262,7 @@
                     </div>
                 </div>
                 
+                <!-- member 3 -->
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card">
                         <img src="https://placehold.co/400x300" alt="Diverse woman in creative attire presenting data visualization on a screen" class="img-fluid">
@@ -413,6 +278,181 @@
                     </div>
                 </div>
                 
+                <!-- member 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- member 5 -->
+                 <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- member 6 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="" class="img-fluid">
+                        <div class="p-4">   
+                            <h5>Emily Chen</h5>
+                            <p class="text-primary mb-1">Marketing Specialist</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="speaker-card ">
+                        <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
+                        <div class="p-4">
+                            <h5>David Kim</h5>
+                            <p class="text-primary mb-1">Vice President</p>
+                            <div class="d-flex">
+                                <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card ">
                         <img src="https://placehold.co/400x300" alt="Male business leader in a smart casual outfit gesturing during a presentation" class="img-fluid">
@@ -429,50 +469,20 @@
                 </div>
             </div>
             
-            <div class="text-center mt-5">
-                <a href="members.html" class="btn btn-outline-warning px-4 ">View Full Committee</a>
-            </div>
+            <div class="w-full max-w-2xl mx-auto text-center flex flex-col items-center fade-in">    
+                <div class="mt-12">
+                    <button onclick="goBack()" class="glow-button flex items-center gap-2 bg-[#874C1B] hover:bg-[#6e3d15] text-white font-bold py-3 px-8 rounded-full text-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Go Back
+                    </button>
+                </div>
+                </div>
         </div>
     </section>
-
-    <section class="contact-section">
-    <div class="form-container">
-        
-        <h1 class="form-title">Contact Us</h1>
-        
-        <form id="contact-form" action="https://formspree.io/f/xwpolbba" method="POST">
-            
-            <div class="input-group">
-                <label for="name" class="input-label">Your Name:</label>
-                <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="email" class="input-label">Your Email Address:</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="message" class="input-label">Message:</label>
-                <textarea id="message" name="message" rows="6" class="form-textarea" placeholder="Your message here..." required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Send Message</button>
-
-            <p id="form-status"></p>
-
-        </form>
-    </div>
-</section>
-
     <footer class="site-footer text-gray-300 py-12">
         <div class="container mx-auto px-6 text-center">
-<<<<<<< HEAD
-            <p class="mb-2">Organizing Comiitee,INSPIRA'25</p>
-=======
             <h3 class="text-2xl font-bold mb-4 text-white">Contact Us</h3>
             <p class="mb-2">Organizing Committee,INSPIRA'25</p>
->>>>>>> 0f0c7a178af3339c2dc42a9af67380089777cfb4
             <p class="mb-2">Email: <a href="mailto:info@inspira2025.online" class="hover:text-orange-400">info@inspira2025.online</a>
             </p>
             <p>Phone: <a href="tel:+94000000000" class="hover:text-orange-400">+94 (72) 768-8334 (Event Cordinator)</a></p>
@@ -481,8 +491,8 @@
             <p><small>Developed By <a href="developers.html" style="text-decoration: underline; color: yellow;">Team INSPIRA</a></small></p></div>
         </div>
     </footer>
+    <!-- Interactive Canvas -->
     <canvas id="interactiveCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
-    
     <script>
         // --- SCRIPT FOR LOADER ---
         window.addEventListener('load', () => {
@@ -579,51 +589,11 @@
                 )
             );
         }
-    </script>
-    
-    <script>
-        // Get the form and status elements from the DOM
-        const form = document.getElementById("contact-form");
-        const status = document.getElementById("form-status");
 
-        // Function to handle the form submission
-        async function handleSubmit(event) {
-            event.preventDefault(); // Prevents the default page reload
-            const data = new FormData(event.target);
 
-            try {
-                const response = await fetch(event.target.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Success
-                    status.innerHTML = "Thanks for your message!";
-                    status.style.color = "#4CAF50"; // Dark Brown
-                    form.reset(); // Clear the form fields
-                } else {
-                    // Server-side error
-                    const responseData = await response.json();
-                    if (Object.hasOwn(responseData, 'errors')) {
-                        status.innerHTML = responseData["errors"].map(error => error["message"]).join(", ");
-                    } else {
-                        status.innerHTML = "Oops! There was a problem submitting your form.";
-                    }
-                    status.style.color = "red";
-                }
-            } catch (error) {
-                // Network error
-                status.innerHTML = "Oops! There was a problem submitting your form.";
-                status.style.color = "red";
-            }
+        function goBack() {
+            window.history.back();
         }
-
-        // Add the submit event listener to the form
-        form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
