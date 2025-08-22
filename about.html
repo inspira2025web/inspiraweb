@@ -368,7 +368,15 @@
 .member-section .swiper-slide-button:hover {
     color: #F28C1A;
 }
-
+.member-section {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly lower */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transition for smooth effect */
+}
+.member-section.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
 </style> 
 </head>
 <body class="animated-gradient text-white overflow-x-hidden">
@@ -603,7 +611,58 @@
         </div>
     </footer>
     <canvas id="interactiveCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // ✅ Swiper initialization with autoplay
+    const swiper = new Swiper('.slider-wrapper', {
+        loop: true,
+        grabCursor: true,
+        spaceBetween: 25,
+
+        autoplay: {
+            delay: 2500, // Slide every 2.5s
+            disableOnInteraction: false, // Keep autoplay after manual swipe
+        },
+
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        breakpoints: {
+            0: {
+                slidesPerView: 1
+            },
+            768: {
+                slidesPerView: 2
+            },
+            1024: {
+                slidesPerView: 3
+            }
+        }
+    });
+
+    // ✅ Scroll animation trigger
+    const section = document.querySelector('.member-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                section.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+</script>
+
+
     <script>
         // --- SCRIPT FOR LOADER ---
         window.addEventListener('load', () => {
@@ -728,39 +787,6 @@
         }
         form.addEventListener("submit", handleSubmit);
     </script>
-    <script>
-            const swiper = new Swiper('.slider-wrapper', {
-  loop: true,
-  grabCursor: true,
-  spaceBetween: 25,
-
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-    dynamicBullets: true,
-},
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-
-  breakpoints: {
-    0: {
-        slidesPerView: 1
-    },
-    768: {
-        slidesPerView: 2
-    },
-    1024: {
-        slidesPerView: 3
-    }
-  }
-
-});
-
-    </script>
+    
 </body>
 </html>
