@@ -7,8 +7,7 @@
     <title>Get Your Ticket - INSPIRA 2025</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Library for PDF generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
@@ -132,7 +131,6 @@
 
     <main id="page-content" class="min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
         
-        <!-- Form Section -->
         <div id="form-container" class="w-full max-w-lg mx-auto">
             <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-lg">
                 <h2 class="text-3xl font-bold text-center mb-2">Get Your Event Ticket</h2>
@@ -157,10 +155,8 @@
             </div>
         </div>
 
-        <!-- Ticket Section (Initially hidden) -->
         <div id="ticket-container" class="w-full max-w-lg mx-auto hidden">
-             <!-- The actual ticket content to be downloaded -->
-            <div id="ticket" class="ticket-gradient text-white rounded-2xl shadow-2xl overflow-hidden">
+             <div id="ticket" class="ticket-gradient text-white rounded-2xl shadow-2xl overflow-hidden">
                 <div class="p-6 md:p-8">
                     <div class="flex justify-between items-start">
                         <div>
@@ -192,19 +188,18 @@
                         <p class="text-xs text-gray-300">Ticket ID:</p>
                         <p id="ticket-id" class="font-mono text-sm"></p>
                     </div>
-                    <div class="w-24 h-10 bg-white p-1 rounded-md">
-                        <!-- Fake QR Code -->
-                        <svg id="qr-code" class="w-full h-full" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 0h6v6H0V0zm2 2v2h2V2H2zM0 14h6v6H0v-6zm2 2v2h2v-2H2zM14 0h6v6h-6V0zm2 2v2h2V2h-2zM8 0h2v2H8V0zM0 8h2v2H0V8zm14 8h2v2h-2v-2zm-4-4h2v2h-2v-2zm-2 2h2v2h-2v-2zm-2-2h2v2H8v-2zm-2 2h2v2H6v-2zm-2-2h2v2H4v-2zm-2 2h2v2H2v-2zm16-2h2v2h-2v-2zm-2 2h2v2h-2v-2zm-2-2h2v2h-2v-2zm-2 2h2v2h-2v-2zm-2-2h2v2h-2v-2zm-2 2h2v2H8v-2zm-2-2h2v2H6v-2zm-2 2h2v2H4v-2zm-2-2h2v2H2v-2zm16 4h2v2h-2v-2zm-2 2h2v2h-2v-2zm-2-2h2v2h-2v-2zm-2 2h2v2h-2v-2zm-2-2h2v2h-2v-2zm-2 2h2v2H8v-2zm-2-2h2v2H6v-2zm-2 2h2v2H4v-2zm-2-2h2v2H2v-2zm16-6h2v2h-2V8zm-2 2h2v2h-2v-2zm-2-2h2v2h-2V8zm-2 2h2v2h-2v-2zm-2-2h2v2h-2V8zm-2 2h2v2H8v-2zm-2-2h2v2H6V8zm-2 2h2v2H4v-2zm-2-2h2v2H2V8zm16-4h2v2h-2V4zm-2 2h2v2h-2V4zm-2-2h2v2h-2V4zm-2 2h2v2h-2V4zm-2-2h2v2h-2V4zm-2 2h2v2H8V4zm-2-2h2v2H6V4zm-2 2h2v2H4V4zm-2-2h2v2H2V4zm16-4h2v2h-2V0zm-2 2h2v2h-2V0zm-2-2h2v2h-2V0z" fill="#0D1117"/></svg>
+                    <div class="bg-white p-1 rounded-md">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://inspira2025web.github.io/inspiraweb" alt="QR Code for INSPIRA 2025" class="w-20 h-20">
                     </div>
                 </div>
             </div>
 
             <div class="mt-6 text-center">
                 <button id="download-btn" class="btn-brand text-white font-bold py-3 px-8 rounded-lg text-lg">
-                    <i class="bi bi-download mr-2"></i> Download as PDF
+                    <i class="bi bi-download mr-2"></i> Download as JPG
                 </button>
                 <button id="new-ticket-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg text-lg mt-4 md:mt-0 md:ml-4">
-                    <i class="bi bi-plus-circle mr-2"></i>
+                    <i class="bi bi-arrow-left-circle mr-2"></i> Go Back
                 </button>
             </div>
         </div>
@@ -247,16 +242,16 @@
             const studentName = document.getElementById('fullName').value.replace(/ /g, '_');
             const regNumber = document.getElementById('regNumber').value;
             
-            const opt = {
-                margin:       0.5,
-                filename:     `INSPIRA2025_Ticket_${regNumber}_${studentName}.pdf`,
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
-            // Use html2pdf library to generate and save the PDF
-            html2pdf().set(opt).from(ticketElement).save();
+            // Use html2canvas to create the image
+            html2canvas(ticketElement, { scale: 2, useCORS: true }).then(canvas => {
+                const dataURL = canvas.toDataURL('image/jpeg', 0.98);
+                const downloadLink = document.createElement('a');
+                downloadLink.href = dataURL;
+                downloadLink.download = `INSPIRA2025_Ticket_${regNumber}_${studentName}.jpg`;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
         });
 
         // Handle the "Get Another Ticket" button click
