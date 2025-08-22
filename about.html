@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
 <link rel="android-chrome-icon" sizes="192x192" href="assets/img/favicon/android-chrome-192x192.png">
 <link rel="android-chrome-icon" sizes="512x512" href="assets/img/favicon/android-chrome-512x512.png">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <style>
     *{
         font-family: 'Poppins', sans-serif;
@@ -304,7 +304,71 @@
         padding: 60px 0;
     }
 }
-        
+/* --- MEMBER SECTION STYLES --- */
+        .member-section{
+    padding: 50px 0 100px;
+    
+}
+
+.member-section .slider-wrapper {
+    overflow: hidden;
+    margin: 0 60px 50px;
+}
+
+.member-section .member {
+    display: flex;
+    padding: 35px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.member-section .member .user-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 50px;
+    border-radius: 100%;
+}
+
+.member-section .member .name {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.member-section .member .post {
+    line-height: 25px;
+    font-weight: 100;
+}
+
+.member-section .section-title {
+    text-align: center;
+    position: absolute;
+    position: relative;
+    text-decoration:  #F28C1A 1px;
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.member-section .swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    opacity: 1;
+    background-color: #541c1c;
+}
+
+.member-section .swiper-slide-button {
+    color: #541c1c;
+    margin-top: -50px;
+    transition: 0.3s ease;
+} 
+
+.member-section .swiper-slide-button:hover {
+    color: #F28C1A;
+}
+
 </style> 
 </head>
 <body class="animated-gradient text-white overflow-x-hidden">
@@ -382,10 +446,62 @@
         </div>
     </section>
 
-    <section id="speakers" class="py-5">
+    <section class="member-section">
         <div class="container">
-            <h2 class="text-center section-title">Organizing committee</h2>            
-            <div class="row g-4">
+            <h2 class="text-center section-title">Organizing committee</h2>  
+             <div class="section-content">
+            <div class="slider-container swiper">
+                <div class="slider-wrapper">
+                    <ui class="member-list swiper-wrapper">
+                        <li class="member swiper-slide">
+                            <img src="https://placehold.co/180" alt="User" class="user-image">
+                            <h3 class="name">Sara Jayawardana</h3>
+                            <i class="post">President of INSPIRA, Faculty of Applied sciences</i>
+                        </li>
+                        <li class="member swiper-slide">
+                            <img src="https://placehold.co/180" alt="User" class="user-image">
+                            <h3 class="name">Sara Jayawardana</h3>
+                            <i class="post">President of INSPIRA, Faculty of Applied sciences</i>
+                        </li>
+                        <li class="member swiper-slide">
+                            <img src="https://placehold.co/180" alt="User" class="user-image">
+                            <h3 class="name">Sara Jayawardana</h3>
+                            <i class="post">President of INSPIRA, Faculty of Applied sciences</i>
+                        </li>
+                        <li class="member swiper-slide">
+                            <img src="https://placehold.co/180" alt="User" class="user-image">
+                            <h3 class="name">Sara Jayawardana</h3>
+                            <i class="post">President of INSPIRA, Faculty of Applied sciences</i>
+                        </li>
+                        <li class="member swiper-slide">
+                            <img src="https://placehold.co/180" alt="User" class="user-image">
+                            <h3 class="name">Sara Jayawardana</h3>
+                            <i class="post">President of INSPIRA, Faculty of Applied sciences</i>
+                        </li>
+                        <li class="member swiper-slide">
+                            <img src="https://placehold.co/180" alt="User" class="user-image">
+                            <h3 class="name">Sara Jayawardana</h3>
+                            <i class="post">President of INSPIRA, Faculty of Applied sciences</i>
+                        </li>
+                        <li class="member swiper-slide">
+                            <img src="https://placehold.co/180" alt="User" class="user-image">
+                            <h3 class="name">Sara Jayawardana</h3>
+                            <i class="post">President of INSPIRA, Faculty of Applied sciences</i>
+                        </li>
+                        <li class="member swiper-slide">
+                            <img src="https://placehold.co/180" alt="User" class="user-image">
+                            <h3 class="name">Sara Jayawardana</h3>
+                            <i class="post">President of INSPIRA, Faculty of Applied sciences</i>
+                        </li>
+                    </ui>
+
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-slide-button swiper-button-prev"></div>
+                    <div class="swiper-slide-button swiper-button-next"></div>
+                </div>
+            </div>
+        </div>          
+            <!-- <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
                     <div class="speaker-card">
                         <img src="https://placehold.co/400x300" class="img-fluid">
@@ -446,7 +562,7 @@
                     </div>
                 </div>
             </div>
-            
+             -->
             <div class="text-center mt-5">
                 <a href="members.html" class="btn btn-outline-warning px-4">View Full Committee</a>
             </div>
@@ -487,7 +603,7 @@
         </div>
     </footer>
     <canvas id="interactiveCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
-    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         // --- SCRIPT FOR LOADER ---
         window.addEventListener('load', () => {
@@ -611,6 +727,40 @@
             }
         }
         form.addEventListener("submit", handleSubmit);
+    </script>
+    <script>
+            const swiper = new Swiper('.slider-wrapper', {
+  loop: true,
+  grabCursor: true,
+  spaceBetween: 25,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    dynamicBullets: true,
+},
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  breakpoints: {
+    0: {
+        slidesPerView: 1
+    },
+    768: {
+        slidesPerView: 2
+    },
+    1024: {
+        slidesPerView: 3
+    }
+  }
+
+});
+
     </script>
 </body>
 </html>
