@@ -203,6 +203,29 @@
             transform: translateY(-3px);
             box-shadow: 0 0 15px rgba(242, 140, 26, 0.6), 0 0 25px rgba(242, 140, 26, 0.4);
         }
+
+        @media (min-width: 768px) {
+            #toprow {
+                height: 15vh;
+            }
+
+            #secondrow {
+                padding: 0 15%;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            #member1 {
+                position: relative;
+                top: 5vh;
+            }
+
+            #member2 {
+                margin-right: 0%;
+            }
+
+        }
+
        </style> 
 </head>
 <body class="animated-gradient text-white overflow-x-hidden">
@@ -229,9 +252,9 @@
         <div class="container">
             <h2 class="text-center section-title">Organizing committee</h2>            
             <div class="row g-4">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" id="toprow">
                     <!-- member 1 -->
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-3" id="member1">
                         <div class="speaker-card ">
                             <img src="assets\img\Org\ASP_2024_079 - Randika Subash.png" class="img-fluid">
                             <div class="p-4">
@@ -246,12 +269,12 @@
                             </div>
                         </div>
                     </div>
-                <!-- </div>
+                </div>
                 
-                <div class="row justify-content-center"> -->
+                <div class="row" id="secondrow">
                     <!-- member 2 -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="speaker-card ">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="speaker-card " id="member2">
                             <img src="assets\img\Org\ICT_2024_130 - Pamodha Vikum.png" class="img-fluid">
                             <div class="p-4">
                                 <h5>Pramodha Vikum</h5>
@@ -266,7 +289,7 @@
                     </div>
                     
                     <!-- member 3 -->
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-4" id="member3">
                         <div class="speaker-card">
                             <img src="assets\img\Org\HPT_2024_046 - Navod Sankalpa.png" alt="Diverse woman in creative attire presenting data visualization on a screen" class="img-fluid">
                             <div class="p-4">
