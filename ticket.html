@@ -220,42 +220,65 @@
 
     <script>
         // Get references to the DOM elements
-        const ticketForm = document.getElementById('ticket-form');
-        const formContainer = document.getElementById('form-container');
-        const ticketContainer = document.getElementById('ticket-container');
-        const downloadBtn = document.getElementById('download-btn');
-        const newTicketBtn = document.getElementById('new-ticket-btn');
+const ticketForm = document.getElementById('ticket-form');
+const formContainer = document.getElementById('form-container');
+const ticketContainer = document.getElementById('ticket-container');
+const downloadBtn = document.getElementById('download-btn');
+const newTicketBtn = document.getElementById('new-ticket-btn');
 
-        // Handle form submission
-        ticketForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent the default form submission
+// Handle form submission
+ticketForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // This line prevents the default form submission to the action URL
 
-            // Get user input
-            const regNumber = document.getElementById('regNumber').value;
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
+    // Get user input
+    const regNumber = document.getElementById('regNumber').value;
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
 
-            // Populate the ticket with user data
-            document.getElementById('ticket-name').textContent = fullName;
-            document.getElementById('ticket-reg').textContent = regNumber;
-            
-            // Generate a simple unique ticket ID
-            const ticketId = 'INSP25-' + Date.now().toString().slice(-6);
-            document.getElementById('ticket-id').textContent = ticketId;
-            
-            // Hide the form and show the ticket
-            formContainer.classList.add('hidden');
-            ticketContainer.classList.remove('hidden');
-        });
+    // Populate the ticket with user data
+    document.getElementById('ticket-name').textContent = fullName;
+    document.getElementById('ticket-reg').textContent = regNumber;
 
-        // Handle the download button click
-        downloadBtn.addEventListener('click', function () {
-            const ticketElement = document.getElementById('ticket');
-            const studentName = document.getElementById('fullName').value.replace(/ /g, '_');
-            const regNumber = document.getElementById('regNumber').value;
-            
-            // Use html2canvas to create the image
-            html2canvas(ticketElement, { scale: 2, useCORS: true }).then(canvas => {
+    // Generate a simple unique ticket ID
+    const ticketId = 'INSP25-' + Date.now().toString().slice(-6);
+    document.getElementById('ticket-id').textContent = ticketId;
+
+    // Hide the form and show the ticket
+    formContainer.classList.add('hidden');
+    ticketContainer.classList.remove('hidden');
+
+
+    // url
+    const formActionUrl = ticketForm.action;
+
+    // FormData object 
+    const formData = new FormData();
+    formData.append('regNumber', regNumber);
+    formData.append('fullName', fullName);
+    formData.append('email', email);
+
+    // Api
+    fetch(formActionUrl, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' 
+    })
+    .then(response => {
+        // .
+        console.log('Form data submitted to Google Sheet successfully!');
+    })
+    .catch(error => {
+        console.error('Error submitting form data:', error);
+    });
+});
+
+// Handle the download button click
+downloadBtn.addEventListener('click', function () {
+    const ticketElement = document.getElementById('ticket');
+    const studentName = document.getElementById('fullName').value.replace(/ /g, '_');
+    const regNumber = document.getElementById('regNumber').value;
+ // Use html2canvas to create the image
+    html2canvas(ticketElement, { scale: 2, useCORS: true }).then(canvas => {
                 const dataURL = canvas.toDataURL('image/jpeg', 0.98);
                 const downloadLink = document.createElement('a');
                 downloadLink.href = dataURL;
@@ -266,14 +289,14 @@
             });
         });
 
-        // Handle the "Get Another Ticket" button click
-        newTicketBtn.addEventListener('click', function() {
-            // Reset the form
-            ticketForm.reset();
-            // Hide the ticket and show the form again
-            ticketContainer.classList.add('hidden');
-            formContainer.classList.remove('hidden');
-        });
+// Handle the "Get Another Ticket" button click
+newTicketBtn.addEventListener('click', function() {
+    // Reset the form
+    ticketForm.reset();
+    // Hide the ticket and show the form again
+    ticketContainer.classList.add('hidden');
+    formContainer.classList.remove('hidden');
+});
 
     </script>
 </body>
