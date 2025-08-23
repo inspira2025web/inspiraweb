@@ -493,7 +493,14 @@
     border-radius: 20px;
     padding: 2rem;
   }
-    </style>
+  
+  .btn-close{
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 1100;
+  }
+  </style>
 </head>
 
 <body class="animated-gradient text-white overflow-x-hidden">
@@ -589,6 +596,7 @@
     <div class="modal-content glass-effect">
       <div class="animated-gradient modal-body">
         <h2 class="text-center section-title">Event Schedule</h2>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="tab-content" id="scheduleTabContent">
                 <div class="mt-12 space-y-8">
                 <div class="fade-in-up flex flex-col md:flex-row items-center gap-4 bg-white/10 backdrop-blur-sm p-6 rounded-2xl text-left" style="animation-delay: 0.4s;">
