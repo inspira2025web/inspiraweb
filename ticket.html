@@ -151,17 +151,19 @@
     <button type="submit" class="w-full btn-brand text-white font-bold py-3 px-5 rounded-lg text-lg">
         <i class="bi bi-ticket-detailed-fill mr-2"></i> Get Ticket
     </button>
-</form>
+</form><div><p style="font-style: italic;"> <br>You will receive a Certificate of participation via email.</p></div>
             </div>
         </div>
-<!--<div><p>You will receive a certificate of participation via email.</p></div>-->
+
         <div id="ticket-container" class="w-full max-w-lg mx-auto hidden">
              <div id="ticket" class="ticket-gradient text-white rounded-2xl shadow-2xl overflow-hidden">
                 <div class="p-6 md:p-8">
                     <div class="flex justify-between items-start">
                         <div>
-                            <h1 class="text-3xl md:text-4xl font-black uppercase tracking-wider">INSPIRA <span class="text-orange-300">'25</span></h1>
-                            <p class="text-sm text-orange-200">Born to Perform, Inspired to Shine</p>
+                            <h1 class="text-3xl md:text-4xl font-black uppercase tracking-wider">INSPIRA<span class="text-orange-300">'25</span></h1>
+                            <p class="text-decoration text-orange-200">English Speech Club 23/24</p>
+                            <p class="text-xs text-gray-300">FAS, Rajarata University Of Sri Lanka.</p>
+                            
                         </div>
                         <div class="text-right">
                              <img src="assets/img/logo2.jpg" class="h-16 w-16 rounded-full object-cover border-2 border-orange-300 p-1" onerror="this.onerror=null;this.src='https://placehold.co/64x64/FFFFFF/541C1C?text=I25';">
@@ -196,7 +198,7 @@
 
             <div class="mt-6 text-center">
                 <button id="download-btn" class="btn-brand text-white font-bold py-3 px-8 rounded-lg text-lg">
-                    <i class="bi bi-download mr-2"></i> Download as JPG
+                    <i class="bi bi-download mr-2"></i> Download Ticket
                 </button>
                 <button id="new-ticket-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg text-lg mt-4 md:mt-0 md:ml-4">
                     <i class="bi bi-arrow-left-circle mr-2"></i> Go Back
@@ -282,7 +284,7 @@ downloadBtn.addEventListener('click', function () {
                 const dataURL = canvas.toDataURL('image/jpeg', 0.98);
                 const downloadLink = document.createElement('a');
                 downloadLink.href = dataURL;
-                downloadLink.download = `INSPIRA2025_Ticket_${regNumber}_${studentName}.jpg`;
+                downloadLink.download = `INSPIRA'25_Ticket_${regNumber}_${studentName}.png`;
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
