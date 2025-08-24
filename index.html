@@ -34,7 +34,15 @@
             animation: waveFlag 10s ease infinite;
             /* New animation */
         }
-
+ :root {
+            --primary: #D78600;
+            --primary-dark: #B56D3A;
+            --secondary: #9E5B2E;
+            --dark: #511D16;
+            --burgundy: #6B3A3E;
+            --light-brown: #B56D3A;
+            --light-gray: #c2c2c2;
+        }
         @keyframes waveFlag {
             0% {
                 background-position: 0% 50%;
@@ -259,7 +267,7 @@
         <img src="assets/img/logo.png" alt="Loading Logo" class="loader-logo">
     </div>
 
-<header class="site-header bg-gray-800/50 backdrop-blur-md border-b border-white/10">
+<header class="site-header bg-primary-800/50 backdrop-blur-md border-b border-white/10">
   <div class="container mx-auto px-6 py-4 flex justify-between items-center">
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-3">
@@ -289,7 +297,7 @@
   </div>
 
   <!-- Mobile Navigation -->
-  <nav id="nav-menu-mobile" class="sm:hidden hidden px-6 pb-4 space-y-2 bg-gray-800/50 backdrop-blur-md border-t border-white/10 rounded-b-lg">
+  <nav id="nav-menu-mobile" class="sm:hidden hidden px-6 pb-4 space-y-2 bg-primary-800/50 backdrop-blur-md border-t border-white/10 rounded-b-lg">
     <a href="index.html" class="block font-semibold text-orange-400 hover:text-white transition">Home</a>
     <a href="about.html" class="block font-semibold text-white hover:text-orange-400 transition">About</a>
     <a href="ticket.html" class="block font-semibold text-white hover:text-orange-400 transition">Get Ticket</a>
