@@ -113,21 +113,29 @@
 
 <body class="animated-gradient text-white">
 
+   
     <header class="site-header">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="assets/img/logo2.jpg" class="h-12 w-12 rounded-full object-cover border-2 border-orange-400 p-1" onerror="this.onerror=null;this.src='https://placehold.co/48x48/541C1C/FFFFFF?text=I25';">
-                <span class="font-bold text-xl hidden sm:block">INSPIRA '25</span>
-            </a>
-            <nav>
-                <ul class="flex items-center space-x-8">
-                    <li><a href="index.html" class="nav-link font-semibold">Home</a></li>
-                    <li><a href="about.html" class="nav-link font-semibold">About</a></li>
-                    <li><a href="ticket.html" class="nav-link font-semibold text-orange-400">Get Ticket</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="assets/img/logo2.jpg" class="h-12 w-12 rounded-full object-cover border-2 border-orange-400 p-1">
+            <span class="font-bold text-xl hidden sm:block">INSPIRA '25</span>
+        </a>
+
+        <!-- Hamburger button for small screens -->
+        <button id="nav-toggle" class="sm:hidden text-white focus:outline-none">
+            <i class="bi bi-list text-2xl"></i>
+        </button>
+
+        <!-- Navigation -->
+        <nav id="nav-menu" class="hidden sm:flex space-x-8 items-center">
+            <a href="index.html" class="nav-link font-semibold text-orange-400">Home</a>
+            <a href="about.html" class="nav-link font-semibold">About</a>
+            <a href="ticket.html" class="nav-link font-semibold">Get Ticket</a>
+            <a href="#" class="nav-link font-semibold">Schedule</a>
+        </nav>
+    </div>
+</header>
 
     <main id="page-content" class="min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
         
@@ -219,7 +227,20 @@
             <p><small>Developed By <a href="developers.html" style="text-decoration: underline; color: yellow;">Team INSPIRA</a></small></p></div></div>
         </div>
     </footer>
+<script>
+    // Toggle mobile menu
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
 
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('hidden');
+        navMenu.classList.toggle('flex');
+        navMenu.classList.toggle('flex-col');
+        navMenu.classList.toggle('space-y-4');
+        navMenu.classList.toggle('space-x-0');
+        navMenu.classList.toggle('mt-4');
+    });
+</script>
     <script>
         // Get references to the DOM elements
 const ticketForm = document.getElementById('ticket-form');
