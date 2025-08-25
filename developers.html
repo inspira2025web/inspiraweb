@@ -61,21 +61,6 @@
             padding: 0 15px;
         }
 
-        /* --- NEW HEADER STYLES (FROM INDEX.HTML) --- */
-        .site-header {
-            margin: 1%;
-            border-radius: 2rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 98%;
-            z-index: 1000;
-            background-color: rgba(84, 28, 28, 0.5); /* Semi-transparent dark brown */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         .nav-link {
             position: relative;
             transition: color 0.3s ease;
@@ -101,14 +86,6 @@
             width: 100%;
             left: 0;
         }
-
-        @media (max-width: 768px) {
-            .site-header {
-                margin-top: 2vh;
-            }
-        }
-        /* --- END OF NEW HEADER STYLES --- */
-        
 
         /* Main Content */
         main {
@@ -343,8 +320,8 @@
             </nav>
         </div>
 
-        <nav id="nav-menu-mobile" class="sm:hidden hidden px-6 pb-4 space-y-2 rounded-b-2xl">
-            <a href="index.html" class="nav-link font-semibold text-white hover:text-orange-400 transition">Home</a>
+        <nav id="nav-menu-mobile" class="sm:hidden hidden bg-[#541C1C]/60 backdrop-blur-lg px-6 pb-4 space-y-2 rounded-b-2xl">
+            <a href="index.html" class="block py-2 font-semibold text-orange-400 hover:text-white transition">Home</a>
             <a href="about.html" class="block py-2 font-semibold text-white hover:text-orange-400 transition">About</a>
             <a href="ticket.html" class="block py-2 font-semibold text-white hover:text-orange-400 transition">Get Ticket</a>
             <a href="#" class="block py-2 font-semibold text-white hover:text-orange-400 transition">Schedule</a>
@@ -457,10 +434,7 @@
                             <p class="dev-card__role">UI Designer</p>
                             <p class="dev-card__secondary-role">Quality Assurance</p>
                             <div class="dev-card__socials">
-                                <!--<a href="https://networkchukka.github.io/site/" target="_blank" aria-label="Website"><i class="bi bi-globe"></i></a>-->
                                 <a href="https://github.com/Samudisavindya" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                                <!--<a href="https://www.linkedin.com/in/randikasubash" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                                <a href="https://www.facebook.com/randikasubash1015" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>-->
                                 <a href="mailto:samudiabeywickrama@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
                             </div>
                         </div>
@@ -485,17 +459,15 @@
         </div>
     </footer>
 <script>
-    // Toggle mobile menu
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
+    const toggleButton = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('nav-menu-mobile');
+    const hamburgerIcon = document.getElementById('hamburger');
+    const closeIcon = document.getElementById('close');
 
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('hidden');
-        navMenu.classList.toggle('flex');
-        navMenu.classList.toggle('flex-col');
-        navMenu.classList.toggle('space-y-4');
-        navMenu.classList.toggle('space-x-0');
-        navMenu.classList.toggle('mt-4');
+    toggleButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        hamburgerIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
     });
 </script>
 </body>
