@@ -317,43 +317,39 @@
 <body>
 
      
-   <header class="site-header bg-primary-800/50 backdrop-blur-md border-b border-white/10">
-  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-    <!-- Logo -->
-    <a href="index.html" class="flex items-center gap-3">
-      <img src="assets/img/logo2.jpg" class="h-12 w-12 rounded-full object-cover border-2 border-orange-400 p-1">
-      <span class="font-bold text-xl hidden sm:block text-white">INSPIRA '25</span>
-    </a>
+   <header class="fixed top-2 sm:top-4 left-1/2 -translate-x-1/2 w-[96%] max-w-7xl rounded-2xl z-50 bg-[#541C1C]/60 backdrop-blur-lg border border-white/10">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="assets/img/logo2.jpg" class="h-12 w-12 rounded-full object-cover border-2 border-orange-400 p-1">
+                <span class="font-bold text-xl hidden sm:block text-white">INSPIRA '25</span>
+            </a>
 
-    <!-- Hamburger / Close Button for mobile -->
-    <button id="nav-toggle" class="sm:hidden text-white focus:outline-none">
-      <!-- Hamburger icon -->
-      <svg id="hamburger" class="h-8 w-8 block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-      <!-- Close icon -->
-      <svg id="close" class="h-8 w-8 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </button>
+            <button id="nav-toggle" class="sm:hidden text-white focus:outline-none">
+                <svg id="hamburger" class="h-8 w-8 block" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="close" class="h-8 w-8 hidden" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
 
-    <!-- Desktop Navigation -->
-    <nav id="nav-menu" class="hidden sm:flex space-x-8 items-center">
-      <a href="index.html" class="nav-link font-semibold text-orange-400 hover:text-white transition">Home</a>
-      <a href="about.html" class="nav-link font-semibold text-white hover:text-orange-400 transition">About</a>
-      <a href="ticket.html" class="nav-link font-semibold text-white hover:text-orange-400 transition">Get Ticket</a>
-      <a href="#" class="nav-link font-semibold text-white hover:text-orange-400 transition">Schedule</a>
-    </nav>
-  </div>
+            <nav id="nav-menu" class="hidden sm:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link font-semibold text-orange-400 hover:text-white transition">Home</a>
+                <a href="about.html" class="nav-link font-semibold text-white hover:text-orange-400 transition">About</a>
+                <a href="ticket.html" class="nav-link font-semibold text-white hover:text-orange-400 transition">Get Ticket</a>
+                <a href="#" class="nav-link font-semibold text-white hover:text-orange-400 transition">Schedule</a>
+            </nav>
+        </div>
 
-  <!-- Mobile Navigation -->
-  <nav id="nav-menu-mobile" class="sm:hidden hidden px-6 pb-4 space-y-2 bg-primary-800/50 backdrop-blur-md border-t border-white/10 rounded-b-lg">
-    <a href="index.html" class="block font-semibold text-orange-400 hover:text-white transition">Home</a>
-    <a href="about.html" class="block font-semibold text-white hover:text-orange-400 transition">About</a>
-    <a href="ticket.html" class="block font-semibold text-white hover:text-orange-400 transition">Get Ticket</a>
-    <a href="#" class="block font-semibold text-white hover:text-orange-400 transition">Schedule</a>
-  </nav>
-</header>
+        <nav id="nav-menu-mobile" class="sm:hidden hidden px-6 pb-4 space-y-2 rounded-b-2xl">
+            <a href="index.html" class="nav-link font-semibold text-white hover:text-orange-400 transition">Home</a>
+            <a href="about.html" class="block py-2 font-semibold text-white hover:text-orange-400 transition">About</a>
+            <a href="ticket.html" class="block py-2 font-semibold text-white hover:text-orange-400 transition">Get Ticket</a>
+            <a href="#" class="block py-2 font-semibold text-white hover:text-orange-400 transition">Schedule</a>
+        </nav>
+    </header>
     <main>
         <section class="team-section">
             <div class="container">
@@ -421,6 +417,22 @@
                                 <a href="https://www.linkedin.com/in/randikasubash" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
                                 <a href="https://www.facebook.com/randikasubash1015" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
                                 <a href="mailto:randikaudaynga90@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dev-card">
+                        <div class="dev-card-content">
+                            <img src="assets/img/developers/7.PNG" alt="Randika Subash" class="dev-card__image">
+                            <h3 class="dev-card__name">Ravindu Dulakshan</h3>
+                            <p class="dev-card__role">Frontend Developer</p>
+                            <p class="dev-card__secondary-role">System Administrator</p>
+                            <div class="dev-card__socials">
+                                <a href="#" target="_blank" aria-label="Website"><i class="bi bi-globe"></i></a>
+                                <a href="https://github.com/ravydu" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                                <a href="https://www.linkedin.com/in/ravindu-dulakshan-25359a345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="https://www.facebook.com/share/1CMCBLqW6t/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="mailto:ravydu000@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
                             </div>
                         </div>
                     </div>
