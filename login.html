@@ -1,491 +1,523 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Student Portal</title>
+    <title>Login - INSPIRA 2025</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- html2canvas CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    
-    <!-- Google Fonts (Poppins) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="icon" href="https://placehold.co/32x32/541C1C/FFFFFF?text=I25" type="image/x-icon">
     <style>
-        /* Poppins font එක සහ මූලික background style එක යෙදීම */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f0f2f5;
         }
-
-        /* ඉල්ලීමට අනුව Ticket එක සඳහා වන විශේෂිත Gradient style එක */
-        .ticket-gradient {
-            background: linear-gradient(to right, #541C1C, #6B2E2E, #874C1B);
+        .animated-gradient {
+            background: linear-gradient(-45deg, #541C1C, #6B2E2E, #874C1B, #541C1C);
+            background-size: 400% 400%;
+            animation: waveFlag 10s ease infinite;
         }
-        
-        /* Loading spinner style */
-        .loader {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #3498db;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes waveFlag { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .form-input { background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
+        .form-input:focus { background-color: rgba(255, 255, 255, 0.2); border-color: #F28C1A; outline: none; box-shadow: 0 0 0 3px rgba(242, 140, 26, 0.5); }
+        .ticket-gradient { background: linear-gradient(135deg, #874C1B, #6B2E2E, #541C1C); }
+        .btn-brand { background-color: #F28C1A; transition: all 0.3s ease; }
+        .btn-brand:hover { background-color: #d87e17; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .form-container { display: none; }
+        .form-container.active { display: block; }
+        .dp-card { background: linear-gradient(135deg, #8a5a2b, #7a3d3d); }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
 
-    <!-- App Container -->
-    <div id="app-container" class="w-full">
+<body class="animated-gradient text-white">
 
-        <!-- Loader -->
-        <div id="loader" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-            <div class="loader"></div>
+    <main id="page-content" class="min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+        
+        <!-- Loading Spinner -->
+        <div id="loader" class="hidden text-center">
+            <svg class="animate-spin h-10 w-10 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p class="mt-4 text-lg">Loading...</p>
         </div>
 
-        <!-- Authentication Container -->
-        <div id="auth-container" class="max-w-md mx-auto p-8 bg-white rounded-xl shadow-lg">
-            
+        <!-- Auth Forms Container -->
+        <div id="auth-section">
             <!-- Sign In Form -->
-            <form id="signin-form" class="space-y-6">
-                <h2 class="text-2xl font-bold text-center text-gray-800">Student Sign In</h2>
-                <div>
-                    <label for="signin-regno" class="block text-sm font-medium text-gray-700">Student Reg. No</label>
-                    <input type="text" id="signin-regno" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                <div>
-                    <label for="signin-password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="signin-password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                <div class="flex items-center justify-between">
-                    <a href="#" id="forgot-password-btn" class="text-sm text-indigo-600 hover:text-indigo-500">Forgot Password?</a>
-                </div>
-                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign In</button>
-                <p class="text-center text-sm text-gray-600">
-                    Don't have an account? <a href="#" id="show-signup" class="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</a>
-                </p>
-            </form>
-
-            <!-- Sign Up Form (hidden by default) -->
-            <form id="signup-form" class="space-y-6 hidden">
-                <h2 class="text-2xl font-bold text-center text-gray-800">Student Sign Up</h2>
-                <div>
-                    <label for="signup-regno" class="block text-sm font-medium text-gray-700">Student Reg. No</label>
-                    <input type="text" id="signup-regno" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                <div>
-                    <label for="signup-email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" id="signup-email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                <div>
-                    <label for="signup-password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="signup-password" required minlength="6" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign Up</button>
-                <p class="text-center text-sm text-gray-600">
-                    Already have an account? <a href="#" id="show-signin" class="font-medium text-indigo-600 hover:text-indigo-500">Sign In</a>
-                </p>
-            </form>
-
-        </div>
-
-        <!-- Dashboard Container (hidden by default) -->
-        <div id="dashboard-container" class="max-w-2xl mx-auto p-8 bg-white rounded-xl shadow-lg hidden">
-            <div class="flex justify-between items-start">
-                <h2 class="text-3xl font-bold text-gray-800">Student Dashboard</h2>
-                <button id="logout-btn" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Logout</button>
-            </div>
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <!-- Student Info -->
-                <div class="space-y-4">
-                    <div>
-                        <p class="text-sm text-gray-500">Full Name</p>
-                        <p id="student-name" class="text-xl font-semibold text-gray-900">Loading...</p>
-                    </div>
-                    <div>
-                        <p class="text-sm text-gray-500">Registration No.</p>
-                        <p id="student-regno" class="text-xl font-semibold text-gray-900">Loading...</p>
+            <div id="signin-container" class="form-container active w-full max-w-md mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-center mb-2">Welcome Back!</h2>
+                    <p class="text-center text-gray-300 mb-6">Sign in to get your ticket and DP.</p>
+                    <form id="signin-form" class="space-y-6">
+                        <div>
+                            <label for="signin-email" class="block mb-2 text-sm font-medium text-gray-200">Email Address</label>
+                            <input type="email" id="signin-email" class="form-input w-full px-4 py-3 rounded-lg text-white" placeholder="your.email@example.com" required>
+                        </div>
+                        <div>
+                            <label for="signin-password" class="block mb-2 text-sm font-medium text-gray-200">Password</label>
+                            <input type="password" id="signin-password" class="form-input w-full px-4 py-3 rounded-lg text-white" placeholder="••••••••" required>
+                        </div>
+                        <p id="signin-error" class="text-red-400 text-sm mt-2 hidden"></p>
+                        <button type="submit" class="w-full btn-brand text-white font-bold py-3 px-5 rounded-lg text-lg">
+                            <i class="bi bi-box-arrow-in-right mr-2"></i> Sign In
+                        </button>
+                    </form>
+                    <div class="text-center mt-6 text-sm">
+                        <p class="text-gray-300">Don't have an account? <a href="#" id="show-signup" class="font-medium text-orange-400 hover:underline">Sign Up</a></p>
+                        <p class="text-gray-300 mt-2"><a href="#" id="show-forgot" class="font-medium text-orange-400 hover:underline">Forgot Password?</a></p>
                     </div>
                 </div>
-                <!-- DP Info -->
-                <div class="flex flex-col items-center justify-center space-y-4">
-                    <img id="student-dp" src="https://via.placeholder.com/150" alt="Student DP" class="w-40 h-40 rounded-full object-cover border-4 border-gray-200">
-                    <a id="download-dp-btn" href="#" download class="w-full text-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700">Download DP</a>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signup-container" class="form-container w-full max-w-md mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-center mb-2">Create Account</h2>
+                    <p class="text-center text-gray-300 mb-6">First, let's check if you are registered for the event.</p>
+                    <form id="signup-form" class="space-y-6">
+                         <div>
+                            <label for="signup-reg" class="block mb-2 text-sm font-medium text-gray-200">Registration Number</label>
+                            <input type="text" id="signup-reg" class="form-input w-full px-4 py-3 rounded-lg text-white" placeholder="e.g., ASP/2024/079" required>
+                        </div>
+                        <div>
+                            <label for="signup-name" class="block mb-2 text-sm font-medium text-gray-200">Full Name</label>
+                            <input type="text" id="signup-name" class="form-input w-full px-4 py-3 rounded-lg text-white" placeholder="Your full name" required>
+                        </div>
+                        <div>
+                            <label for="signup-email" class="block mb-2 text-sm font-medium text-gray-200">Email Address</label>
+                            <input type="email" id="signup-email" class="form-input w-full px-4 py-3 rounded-lg text-white" placeholder="your.email@example.com" required>
+                        </div>
+                        <div>
+                            <label for="signup-password" class="block mb-2 text-sm font-medium text-gray-200">Create Password</label>
+                            <input type="password" id="signup-password" class="form-input w-full px-4 py-3 rounded-lg text-white" placeholder="Must be at least 6 characters" required>
+                        </div>
+                        <p id="signup-error" class="text-red-400 text-sm mt-2 hidden"></p>
+                        <button type="submit" class="w-full btn-brand text-white font-bold py-3 px-5 rounded-lg text-lg">
+                           <i class="bi bi-person-plus-fill mr-2"></i> Sign Up
+                        </button>
+                    </form>
+                    <div class="text-center mt-6 text-sm">
+                        <p class="text-gray-300">Already have an account? <a href="#" id="show-signin" class="font-medium text-orange-400 hover:underline">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+             <!-- Forgot Password Form -->
+            <div id="forgot-container" class="form-container w-full max-w-md mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-center mb-2">Reset Password</h2>
+                    <p class="text-center text-gray-300 mb-6">Enter your email to receive a password reset link.</p>
+                    <form id="forgot-form" class="space-y-6">
+                        <div>
+                            <label for="forgot-email" class="block mb-2 text-sm font-medium text-gray-200">Email Address</label>
+                            <input type="email" id="forgot-email" class="form-input w-full px-4 py-3 rounded-lg text-white" placeholder="your.email@example.com" required>
+                        </div>
+                        <p id="forgot-message" class="text-green-400 text-sm mt-2 hidden"></p>
+                        <p id="forgot-error" class="text-red-400 text-sm mt-2 hidden"></p>
+                        <button type="submit" class="w-full btn-brand text-white font-bold py-3 px-5 rounded-lg text-lg">
+                            Send Reset Link
+                        </button>
+                    </form>
+                    <div class="text-center mt-6 text-sm">
+                        <p class="text-gray-300">Remembered your password? <a href="#" id="show-signin-2" class="font-medium text-orange-400 hover:underline">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Logged In Section -->
+        <div id="app-section" class="hidden w-full max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold">Welcome, <span id="user-name-display"></span>!</h2>
+            <p class="text-gray-300 mb-8">Your event pass and profile picture are ready.</p>
+            <div class="flex justify-end mb-4">
+                <button id="signout-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+                    <i class="bi bi-box-arrow-left mr-2"></i> Sign Out
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Ticket Section -->
+                <div id="ticket-wrapper">
+                    <div id="ticket" class="ticket-gradient text-white rounded-2xl shadow-2xl overflow-hidden text-left">
+                       <div class="p-6">
+                           <div class="flex justify-between items-start">
+                               <div>
+                                   <h1 class="text-3xl font-black uppercase tracking-wider">INSPIRA<span class="text-orange-300">'25</span></h1>
+                                   <p class="text-orange-200">English Speech Club 23/24</p>
+                                   <p class="text-xs text-gray-300">FAS, Rajarata University Of Sri Lanka.</p>
+                               </div>
+                               <img src="https://placehold.co/64x64/FFFFFF/541C1C?text=I25" class="h-16 w-16 rounded-full object-cover border-2 border-orange-300 p-1">
+                           </div>
+                           <div class="mt-8">
+                               <p class="text-gray-300 text-sm uppercase">Admittee:</p>
+                               <h2 id="ticket-name" class="text-2xl font-bold"></h2>
+                               <p id="ticket-reg" class="text-gray-200"></p>
+                           </div>
+                           <div class="mt-6 border-t-2 border-dashed border-white/20 pt-6 flex justify-between items-center">
+                               <div>
+                                   <p class="text-gray-300 text-sm uppercase">Date & Time</p>
+                                   <p class="font-semibold text-lg">Oct 1, 2025 | 09:00 AM</p>
+                               </div>
+                               <div>
+                                   <p class="text-gray-300 text-sm uppercase text-right">Venue</p>
+                                   <p class="font-semibold text-lg text-right">ZOOM</p>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="bg-black/20 px-6 py-4 flex items-center justify-between">
+                           <div>
+                               <p class="text-xs text-gray-300">Ticket ID:</p>
+                               <p id="ticket-id" class="font-mono text-sm"></p>
+                           </div>
+                           <div class="bg-white p-1 rounded-md">
+                               <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://inspira2025web.github.io/inspiraweb" alt="QR Code" class="w-20 h-20">
+                           </div>
+                       </div>
+                   </div>
+                   <div class="mt-6 text-center">
+                       <button id="download-ticket-btn" class="w-full md:w-auto btn-brand text-white font-bold py-3 px-8 rounded-lg text-lg">
+                           <i class="bi bi-download mr-2"></i> Download Ticket
+                       </button>
+                   </div>
+                </div>
+
+                <!-- DP Section -->
+                <div id="dp-wrapper">
+                    <div class="dp-card text-white rounded-2xl shadow-2xl p-6 flex flex-col items-center justify-center h-full">
+                         <h3 class="text-2xl font-bold mb-4">Profile Picture Generator</h3>
+                         <p class="text-gray-300 mb-6">Download your profile picture for Zoom.</p>
+                         <div class="relative w-48 h-48">
+                            <canvas id="dp-canvas" width="512" height="512" class="rounded-full border-4 border-orange-400 shadow-lg absolute inset-0"></canvas>
+                         </div>
+                         <p class="mt-6 text-lg">Ready for Download!</p>
+                         <div class="mt-6 text-center">
+                             <button id="download-dp-btn" class="w-full md:w-auto btn-brand text-white font-bold py-3 px-8 rounded-lg text-lg">
+                                 <i class="bi bi-download mr-2"></i> Download Picture
+                             </button>
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-    </div>
+    </main>
 
-    <!-- Hidden Ticket for Capturing -->
-    <div id="ticket-for-capture" class="ticket-gradient text-white p-6 rounded-lg shadow-xl" style="width: 400px; position: absolute; top: -9999px; left: -9999px;">
-        <div class="text-center border-b-2 border-dashed border-white pb-4 mb-4">
-            <h3 class="text-2xl font-bold tracking-wider">EVENT TICKET</h3>
-        </div>
-        <div class="space-y-2">
-            <div>
-                <p class="text-xs uppercase opacity-75">Student Name</p>
-                <p id="ticket-name" class="text-lg font-medium">Student Name</p>
-            </div>
-            <div>
-                <p class="text-xs uppercase opacity-75">Registration No.</p>
-                <p id="ticket-regno" class="text-lg font-medium">REG/000/000</p>
-            </div>
-        </div>
-        <div class="text-center mt-6">
-             <p class="text-sm font-mono">PORTAL ACCESS GRANTED</p>
-        </div>
-    </div>
-
-
-    <!-- Firebase SDK Scripts -->
+    <!-- Firebase SDK -->
     <script type="module">
-        // Firebase SDKs
+        // This is a placeholder for your Firebase configuration.
+        // You will get this from the Firebase console and paste it here.
+        // See the guide.md file for instructions.
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCr2cosjPXiSQH7aaedzthLv2E7kq0vclk",
+  authDomain: "inspira-2.firebaseapp.com",
+  projectId: "inspira-2",
+  storageBucket: "inspira-2.firebasestorage.app",
+  messagingSenderId: "470330649926",
+  appId: "1:470330649926:web:703d628db10a3234e4c947"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+        
+        // --- DO NOT EDIT BELOW THIS LINE ---
+
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { 
             getAuth, 
-            onAuthStateChanged, 
             createUserWithEmailAndPassword, 
             signInWithEmailAndPassword, 
-            signOut,
+            signOut, 
+            onAuthStateChanged,
+            sendEmailVerification,
             sendPasswordResetEmail
         } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         import { 
             getFirestore, 
-            collection, 
-            query, 
-            where, 
-            getDocs, 
             doc, 
             setDoc,
-            getDoc
+            getDoc 
         } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-        import { 
-            getStorage, 
-            ref, 
-            getDownloadURL 
-        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-        // =================================================================================
-        // CONFIGURATION - ඔබ විසින් ලබාදුන් අගයන්
-        // =================================================================================
+        // --- MOCK DATABASE (Simulating your Google Sheet) ---
+        // In a real app, this check would happen on the server-side.
+        // For this demo, we'll check it on the client side before sign-up.
+        const registeredUsersSheet = [
+            { regNumber: "ASP/2024/079", name: "Randika Subash", email: "randikaudayanga90@gmail.com" },
+            { regNumber: "ASP/2024/065", name: "Janidu Chamupathi", email: "janidusenarathna157@gmail.com" },
+            { regNumber: "ASP2024112", name: "Malith Sandeepa", email: "devilgamer167@gmail.com" },
+            { regNumber: "ICT2024031", name: "Pasindu Dissanayake", email: "thinetpasindu@gmail.com" },
+        ];
         
-        // ඔබගේ Firebase ව්‍යාපෘතියේ config අගයන්
-        const firebaseConfig = {
-            apiKey: "AIzaSyCuOOkScsf55lgleKdbFgxo0ej9WD32i9k",
-            authDomain: "inspira-2025.firebaseapp.com",
-            projectId: "inspira-2025",
-            storageBucket: "inspira-2025.appspot.com", // Changed to .appspot.com for wider compatibility
-            messagingSenderId: "935511802660",
-            appId: "1:935511802660:web:7dc167cb1f199549c9e9b1",
-            measurementId: "G-V6Y7G087CL"
-        };
-        
-        const appId = "inspira-2025-portal"; 
+        function checkRegistration(regNumber, name, email) {
+            const normalizedReg = regNumber.toUpperCase().replace(/\s/g, "");
+            const normalizedName = name.toLowerCase().trim();
+            const normalizedEmail = email.toLowerCase().trim();
+            
+            return registeredUsersSheet.some(user => 
+                user.regNumber.toUpperCase().replace(/\s/g, "") === normalizedReg &&
+                user.name.toLowerCase().trim() === normalizedName &&
+                user.email.toLowerCase().trim() === normalizedEmail
+            );
+        }
 
-        // ඔබගේ Google Apps Script URL එක
-        const googleAppsScriptUrl = "https://script.google.com/macros/s/AKfycbx7hGRxMboLLjGWEeGEYCdWQVc9bNhkZXdMGwrDUU3BVjxq0TVK25K7-cAke9RCLKaOlw/exec";
-
-        // =================================================================================
-        // FIREBASE INITIALIZATION - Firebase ආරම්භක සැකසුම්
-        // =================================================================================
+        // --- Firebase Initialization ---
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const storage = getStorage(app);
 
-        // =================================================================================
-        // DOM ELEMENT REFERENCES - HTML elements වෙත යොමුවීම්
-        // =================================================================================
+        // --- UI Elements ---
         const loader = document.getElementById('loader');
-        const authContainer = document.getElementById('auth-container');
-        const dashboardContainer = document.getElementById('dashboard-container');
-        
+        const authSection = document.getElementById('auth-section');
+        const appSection = document.getElementById('app-section');
+
+        const signinContainer = document.getElementById('signin-container');
+        const signupContainer = document.getElementById('signup-container');
+        const forgotContainer = document.getElementById('forgot-container');
+
         const signinForm = document.getElementById('signin-form');
         const signupForm = document.getElementById('signup-form');
+        const forgotForm = document.getElementById('forgot-form');
+
+        const signinError = document.getElementById('signin-error');
+        const signupError = document.getElementById('signup-error');
+        const forgotError = document.getElementById('forgot-error');
+        const forgotMessage = document.getElementById('forgot-message');
         
-        const showSignupLink = document.getElementById('show-signup');
-        const showSigninLink = document.getElementById('show-signin');
-        const forgotPasswordBtn = document.getElementById('forgot-password-btn');
-        const logoutBtn = document.getElementById('logout-btn');
+        // --- Form Switchers ---
+        function showForm(formId) {
+            document.querySelectorAll('.form-container').forEach(c => c.classList.remove('active'));
+            document.getElementById(formId).classList.add('active');
+        }
+        
+        document.getElementById('show-signup').addEventListener('click', (e) => { e.preventDefault(); showForm('signup-container'); });
+        document.getElementById('show-signin').addEventListener('click', (e) => { e.preventDefault(); showForm('signin-container'); });
+        document.getElementById('show-signin-2').addEventListener('click', (e) => { e.preventDefault(); showForm('signin-container'); });
+        document.getElementById('show-forgot').addEventListener('click', (e) => { e.preventDefault(); showForm('forgot-container'); });
 
-        // =================================================================================
-        // AUTH STATE OBSERVER - පරිශීලකයා ලොග් වී ඇත්දැයි නිරීක්ෂණය කිරීම
-        // =================================================================================
-        onAuthStateChanged(auth, (user) => {
+        // --- Authentication Logic ---
+        onAuthStateChanged(auth, user => {
+            loader.classList.remove('hidden');
+            authSection.style.display = 'none';
+            appSection.style.display = 'none';
+            
             if (user) {
-                showLoader(true);
-                authContainer.classList.add('hidden');
-                dashboardContainer.classList.remove('hidden');
-                fetchUserData(user);
+                if (user.emailVerified) {
+                    // User is signed in and verified
+                    loadUserData(user);
+                } else {
+                    // User is signed in but not verified
+                    authSection.style.display = 'block';
+                    showForm('signin-container');
+                    signinError.textContent = 'Please verify your email address. A new verification email has been sent.';
+                    signinError.classList.remove('hidden');
+                    sendEmailVerification(user); // Resend verification email
+                    loader.classList.add('hidden');
+                }
             } else {
-                authContainer.classList.remove('hidden');
-                dashboardContainer.classList.add('hidden');
-            }
-            showLoader(false);
-        });
-
-        // =================================================================================
-        // UI TOGGLE FUNCTIONS - Sign In සහ Sign Up Forms මාරු කිරීම
-        // =================================================================================
-        showSignupLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            signinForm.classList.add('hidden');
-            signupForm.classList.remove('hidden');
-        });
-
-        showSigninLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            signupForm.classList.add('hidden');
-            signinForm.classList.remove('hidden');
-        });
-
-        function showLoader(show) {
-            if (show) {
-                loader.classList.remove('hidden');
-            } else {
+                // User is signed out
+                authSection.style.display = 'block';
+                showForm('signin-container');
                 loader.classList.add('hidden');
             }
-        }
-
-        // =================================================================================
-        // SIGN-UP FUNCTIONALITY - නව ගිණුමක් සෑදීම
-        // =================================================================================
+        });
+        
+        // Sign Up
         signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            showLoader(true);
-
-            const regNo = document.getElementById('signup-regno').value.trim();
-            const email = document.getElementById('signup-email').value.trim();
+            const reg = document.getElementById('signup-reg').value;
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
             const password = document.getElementById('signup-password').value;
+            
+            signupError.classList.add('hidden');
 
+            // 1. Check if user is in our "Google Sheet"
+            if (!checkRegistration(reg, name, email)) {
+                signupError.textContent = "Registration details not found. Please double-check your information.";
+                signupError.classList.remove('hidden');
+                return;
+            }
+
+            // 2. Create user with Firebase Auth
             try {
-                //Firestore හි ලියාපදිංචි අංකය (Reg. No) දැනටමත් පවතීදැයි පරීක්ෂා කිරීම
-                const userProfileCollectionRef = collection(db, `artifacts/${appId}/users`);
-                const q = query(userProfileCollectionRef, where("regNo", "==", regNo));
-                const querySnapshot = await getDocs(q);
-
-                if (!querySnapshot.empty) {
-                     // Reg No එකට අදාළ document එකක් තියෙනවා. ඒක profile/data වලද කියලා බලන්න ඕන.
-                     let profileExists = false;
-                     for(const userDoc of querySnapshot.docs){
-                         const profileDataRef = doc(db, `artifacts/${appId}/users/${userDoc.id}/profile/data`);
-                         const profileSnap = await getDoc(profileDataRef);
-                         if(profileSnap.exists() && profileSnap.data().regNo === regNo){
-                             profileExists = true;
-                             break;
-                         }
-                     }
-                     if(profileExists){
-                        throw new Error(`Registration number '${regNo}' already exists.`);
-                     }
-                }
-                
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
-                //Firestore හි පරිශීලකයාගේ profile දත්ත ගබඩා කිරීම
-                await setDoc(doc(db, `artifacts/${appId}/users/${user.uid}`), { regNo: regNo });
-                await setDoc(doc(db, `artifacts/${appId}/users/${user.uid}/profile/data`), {
-                    regNo: regNo,
+                // 3. Send email verification
+                await sendEmailVerification(user);
+
+                // 4. Save user data to Firestore
+                await setDoc(doc(db, "users", user.uid), {
+                    fullName: name,
+                    regNumber: reg,
                     email: email,
-                    fullName: "Student Name" 
+                    ticketId: `INSP25-${Date.now().toString().slice(-6)}`
                 });
-                
-                alert("Sign up successful! Please sign in.");
+
+                alert('Account created! Please check your email to verify your account before signing in.');
                 signupForm.reset();
-                showSigninLink.click();
+                showForm('signin-container');
 
             } catch (error) {
-                console.error("Sign up error:", error);
-                alert(`Sign up failed: ${error.message}`);
-            } finally {
-                showLoader(false);
+                signupError.textContent = error.message;
+                signupError.classList.remove('hidden');
             }
         });
 
-        // =================================================================================
-        // SIGN-IN FUNCTIONALITY - ගිණුමට ඇතුල් වීම
-        // =================================================================================
+        // Sign In
         signinForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            showLoader(true);
-            
-            const regNo = document.getElementById('signin-regno').value.trim();
+            const email = document.getElementById('signin-email').value;
             const password = document.getElementById('signin-password').value;
-
+            signinError.classList.add('hidden');
+            
             try {
-                //ලබාදුන් Reg. No එකට අදාළ email ලිපිනය Firestore එකෙන් සොයා ගැනීම
-                const usersCollectionRef = collection(db, `artifacts/${appId}/users`);
-                const q = query(usersCollectionRef, where("regNo", "==", regNo));
-                const querySnapshot = await getDocs(q);
-
-                if (querySnapshot.empty) {
-                    throw new Error("No user found with this registration number.");
-                }
-                
-                // Reg No එකට අදාළ user ගේ profile data ලබාගැනීම
-                const userId = querySnapshot.docs[0].id;
-                const profileDataRef = doc(db, `artifacts/${appId}/users/${userId}/profile/data`);
-                const profileSnap = await getDoc(profileDataRef);
-
-                if(!profileSnap.exists()){
-                    throw new Error("User profile not found. Please contact support.");
-                }
-                
-                const userEmail = profileSnap.data().email;
-
-                await signInWithEmailAndPassword(auth, userEmail, password);
-
+                await signInWithEmailAndPassword(auth, email, password);
+                // onAuthStateChanged will handle the redirect
             } catch (error) {
-                console.error("Sign in error:", error);
-                alert(`Sign in failed: ${error.message}`);
-            } finally {
-                showLoader(false);
+                 signinError.textContent = error.message;
+                 signinError.classList.remove('hidden');
             }
         });
 
-        // =================================================================================
-        // PASSWORD RESET FUNCTIONALITY - මුරපදය අමතක වූ විට
-        // =================================================================================
-        forgotPasswordBtn.addEventListener('click', async (e) => {
+        // Forgot Password
+        forgotForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = prompt("Please enter your email address to reset your password:");
-            if (email) {
-                showLoader(true);
-                try {
-                    await sendPasswordResetEmail(auth, email);
-                    alert("Password reset email sent! Please check your inbox.");
-                } catch (error) {
-                    console.error("Password reset error:", error);
-                    alert(`Error sending password reset email: ${error.message}`);
-                } finally {
-                    showLoader(false);
-                }
-            }
-        });
+            const email = document.getElementById('forgot-email').value;
+            forgotError.classList.add('hidden');
+            forgotMessage.classList.add('hidden');
 
-        // =================================================================================
-        // LOGOUT FUNCTIONALITY - ගිණුමෙන් ඉවත් වීම
-        // =================================================================================
-        logoutBtn.addEventListener('click', async () => {
-            showLoader(true);
             try {
-                await signOut(auth);
+                await sendPasswordResetEmail(auth, email);
+                forgotMessage.textContent = 'Password reset email sent! Check your inbox.';
+                forgotMessage.classList.remove('hidden');
+                forgotForm.reset();
             } catch (error) {
-                console.error("Logout error:", error);
-                alert(`Logout failed: ${error.message}`);
+                forgotError.textContent = error.message;
+                forgotError.classList.remove('hidden');
             }
         });
         
-        // =================================================================================
-        // DASHBOARD DATA FETCHING - Dashboard එක සඳහා දත්ත ලබාගැනීම
-        // =================================================================================
-        async function fetchUserData(user) {
+        // Sign Out
+        document.getElementById('signout-btn').addEventListener('click', async () => {
+            await signOut(auth);
+            // onAuthStateChanged will handle the view change
+        });
+
+        // --- App Logic (After Login) ---
+        async function loadUserData(user) {
             try {
-                const userProfileRef = doc(db, `artifacts/${appId}/users/${user.uid}/profile/data`);
-                const docSnap = await getDoc(userProfileRef);
+                const userDocRef = doc(db, "users", user.uid);
+                const userDocSnap = await getDoc(userDocRef);
 
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
+                if (userDocSnap.exists()) {
+                    const userData = userDocSnap.data();
                     
-                    document.getElementById('student-name').textContent = data.fullName;
-                    document.getElementById('student-regno').textContent = data.regNo;
+                    // Populate UI with user data
+                    document.getElementById('user-name-display').textContent = userData.fullName;
+                    document.getElementById('ticket-name').textContent = userData.fullName;
+                    document.getElementById('ticket-reg').textContent = userData.regNumber;
+                    document.getElementById('ticket-id').textContent = userData.ticketId;
                     
-                    fetchStudentDP(data.regNo);
-                    generateAndSendTicket(data, user.email);
-
+                    // Generate and show DP
+                    generateDP(userData.fullName, userData.regNumber);
+                    
+                    // Show the app
+                    authSection.style.display = 'none';
+                    appSection.style.display = 'block';
+                    appSection.classList.remove('hidden');
                 } else {
-                    console.log("No such document!");
-                    alert("Could not find user profile data.");
-                    signOut(auth);
+                    throw new Error("User data not found.");
                 }
+
             } catch (error) {
-                console.error("Error fetching user data:", error);
-                alert("An error occurred while fetching your data.");
+                console.error("Error loading user data: ", error);
+                alert("Could not load your data. Please try signing in again.");
+                signOut(auth);
             } finally {
-                showLoader(false);
+                loader.classList.add('hidden');
             }
         }
         
-        // =================================================================================
-        // FETCH STUDENT DP - ශිෂ්‍ය DP එක ලබාගැනීම
-        // =================================================================================
-        async function fetchStudentDP(regNo) {
-            const dpImageElement = document.getElementById('student-dp');
-            const downloadBtn = document.getElementById('download-dp-btn');
-            const placeholder = 'https://via.placeholder.com/150/808080/FFFFFF?text=No+DP';
+        // --- Download Handlers ---
+        document.getElementById('download-ticket-btn').addEventListener('click', function () {
+            const ticketElement = document.getElementById('ticket');
+            const studentName = document.getElementById('ticket-name').textContent.replace(/ /g, '_');
+            const regNumber = document.getElementById('ticket-reg').textContent.replace(/\//g, '-');
+            
+            html2canvas(ticketElement, { scale: 2, useCORS: true }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `INSPIRA'25_Ticket_${regNumber}_${studentName}.jpg`;
+                link.href = canvas.toDataURL('image/jpeg', 0.98);
+                link.click();
+            });
+        });
+        
+        document.getElementById('download-dp-btn').addEventListener('click', function () {
+             const canvas = document.getElementById('dp-canvas');
+             const studentName = document.getElementById('ticket-name').textContent.replace(/ /g, '_');
+             const regNumber = document.getElementById('ticket-reg').textContent.replace(/\//g, '-');
 
-            try {
-                const dpPath = `student_dps/${regNo}.jpg`;
-                const dpRef = ref(storage, dpPath);
-                const url = await getDownloadURL(dpRef);
+             const link = document.createElement('a');
+             link.download = `INSPIRA'25_DP_${regNumber}_${studentName}.png`;
+             link.href = canvas.toDataURL('image/png');
+             link.click();
+        });
+
+        // --- DP Generator ---
+        function generateDP(name, regNumber) {
+            const canvas = document.getElementById('dp-canvas');
+            const ctx = canvas.getContext('2d');
+            const size = 512;
+
+            // GitHub repo URL for images
+            const imageUrl = 'https://raw.githubusercontent.com/inspira2025web/inspiraweb/photos/ST1001.jpg'; 
+            
+            const base_image = new Image();
+            base_image.crossOrigin = "Anonymous"; // Important for CORS
+            base_image.src = imageUrl;
+
+            base_image.onload = function(){
+                ctx.clearRect(0, 0, size, size);
                 
-                dpImageElement.src = url;
-                downloadBtn.href = url;
-                downloadBtn.setAttribute('download', `${regNo}_dp.jpg`);
-            } catch (error) {
-                console.warn(`DP not found for ${regNo}:`, error.code);
-                dpImageElement.src = placeholder;
-                downloadBtn.href = '#';
-                downloadBtn.style.pointerEvents = 'none';
-                downloadBtn.textContent = 'DP Not Available';
-                downloadBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                downloadBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+                // Draw the template image
+                ctx.drawImage(base_image, 0, 0, size, size);
+
+                // Set text properties
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                
+                // Draw Name
+                ctx.font = 'bold 48px Poppins';
+                ctx.fillText(name, size / 2, size - 90);
+                
+                // Draw Registration Number
+                ctx.font = '36px Poppins';
+                ctx.fillText(regNumber, size / 2, size - 45);
+            }
+            base_image.onerror = function() {
+                // Fallback if image fails to load
+                ctx.fillStyle = '#874C1B';
+                ctx.fillRect(0, 0, size, size);
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.font = 'bold 48px Poppins';
+                ctx.fillText(name, size / 2, 200);
+                ctx.font = '36px Poppins';
+                ctx.fillText(regNumber, size / 2, 250);
+                console.error("Failed to load DP template image from GitHub.");
             }
         }
-
-        // =================================================================================
-        // AUTOMATED TICKET GENERATION & EMAILING - ස්වයංක්‍රීය Ticket සෑදීම සහ යැවීම
-        // =================================================================================
-        async function generateAndSendTicket(userData, userEmail) {
-            console.log("Starting ticket generation process...");
-
-            const ticketElement = document.getElementById('ticket-for-capture');
-            document.getElementById('ticket-name').textContent = userData.fullName;
-            document.getElementById('ticket-regno').textContent = userData.regNo;
-
-            try {
-                const canvas = await html2canvas(ticketElement, { useCORS: true, backgroundColor: null });
-                const base64Image = canvas.toDataURL('image/png');
-
-                const payload = {
-                    email: userEmail,
-                    fullName: userData.fullName,
-                    ticketImage: base64Image
-                };
-                
-                // Using a different approach to bypass CORS for Apps Script
-                const formData = new FormData();
-                formData.append('payload', JSON.stringify(payload));
-
-                // Note: The Apps Script needs to be adjusted to handle form data
-                // This will likely not work if the script expects a raw JSON body.
-                // The "no-cors" mode is a last resort.
-                const response = await fetch(googleAppsScriptUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: JSON.stringify(payload)
-                });
-                
-                console.log('Ticket data sent to Google Apps Script successfully.');
-
-            } catch (error) {
-                console.error('Error in ticket generation/sending process:', error);
-            }
-        }
-
     </script>
 </body>
 </html>
