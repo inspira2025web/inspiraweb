@@ -2,12 +2,6 @@
 // ==                 CONFIGURATION VARIABLES                     ==
 // =================================================================
 
-// Firebase config
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCr2cosjPXiSQH7aaedzthLv2E7kq0vclk",
@@ -18,9 +12,6 @@ const firebaseConfig = {
   appId: "1:470330649926:web:703d628db10a3234e4c947"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
 // Google Apps Script Web App URL
 const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzCd_8bJ8s2uDxXRDTKrs5LuYDSKcRta_rzBNVSOPwC9Jd6EnBmTz_7jmIyMXx_4oPv5w/exec';
 
@@ -28,6 +19,7 @@ const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzCd_8bJ8s2uDxXRD
 // ==                   FIREBASE INITIALIZATION                   ==
 // =================================================================
 
+// නිවැරදි Firebase ආරම්භක කේතය.
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
