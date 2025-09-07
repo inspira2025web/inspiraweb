@@ -5,7 +5,191 @@
   <title>404 page</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arvo'><link rel="stylesheet" href="./style.css">
+<style>
+        /* Using the Poppins font family */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
 
+        /* --- Updated background animation for a waving flag effect --- */
+        .animated-gradient {
+            background: linear-gradient(-45deg, #541C1C, #6B2E2E, #874C1B, #541C1C);
+            background-size: 600% 600%;
+            animation: waveFlag 10s ease infinite;
+        }
+         :root {
+            --primary: #D78600;
+            --primary-dark: #B56D3A;
+            --secondary: #9E5B2E;
+            --dark: #511D16;
+            --burgundy: #6B3A3E;
+            --light-brown: #B56D3A;
+            --light-gray: #c2c2c2;
+        }
+        @keyframes waveFlag {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Keyframes for fade-in-up animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Applying animations with delays */
+        .fade-in-up-1 {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-in-up-2 {
+            animation: fadeInUp 0.8s 0.2s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-in-up-3 {
+            animation: fadeInUp 0.8s 0.4s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-in-up-4 {
+            animation: fadeInUp 0.8s 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-in-up-5 {
+            animation: fadeInUp 0.8s 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Styling for the countdown timer text shadow */
+        .timer-text {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Glow effect for live stream buttons */
+        .glow-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px rgba(242, 140, 26, 0.3), 0 0 10px rgba(242, 140, 26, 0.2);
+        }
+
+        .glow-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(242, 140, 26, 0.6), 0 0 25px rgba(242, 140, 26, 0.4);
+        }
+
+        /* Custom button colors from the palette */
+        .btn-zoom {
+            background-color: #874C1B;
+        }
+
+        .btn-zoom:hover {
+            background-color: #6e3d15;
+        }
+
+        .btn-youtube {
+            background-color: #6B2E2E;
+        }
+
+        .btn-youtube:hover {
+            background-color: #522424;
+        }
+
+        .btn-facebook {
+            background-color: #541C1C;
+        }
+
+        .btn-facebook:hover {
+            background-color: #3d1414;
+        }
+
+        /* --- STYLES FOR ADVANCED LAYOUT --- */
+
+        /* Loading Animation Styles */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 2s ease-out, visibility 3s ease-out;
+        }
+
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            width: 250px;
+            height: 250px;
+            animation: pulse 1s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+            }
+
+            70% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(0.95);
+            }
+        }
+        
+        /* Header and Footer Styles */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #F28C1A;
+            /* Accent color on hover */
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #F28C1A;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+    </style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -27,7 +211,7 @@
 		
 		<p>the page you are looking for not avaible!</p>
 		
-		<a href="" class="link_404">Go to Home</a>
+		<a href="index.html" class="link_404">Go to Home</a>
 	</div>
 		</div>
 		</div>
