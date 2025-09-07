@@ -1,6 +1,6 @@
 <?php
 $title = "Student Profile Picture Generator";
-include "header.php"; 
+include "assets/includes/header1.php"; 
 ?>
 
 <div class="container">
@@ -17,23 +17,23 @@ include "header.php";
             </div>
 
             <div class="input-group">
-                <label for="index-number"><i class="fas fa-id-card"></i> Index Number</label>
-                <input type="text" id="index-number" placeholder="Enter your index number">
+                <label for="index-number"><i class="fas fa-id-card"></i> Student Registration Number</label>
+                <input type="text" id="index-number" placeholder="Enter your student registration number">
             </div>
 
             <div class="input-group">
-                <label for="password"><i class="fas fa-lock"></i> Password</label>
-                <input type="password" id="password" placeholder="Enter your password">
+                <label for="password"><i class="fas fa-lock"></i> Pin Number</label>
+                <input type="password" id="password" placeholder="Enter your pin">
             </div>
 
             <button class="btn" onclick="login()"><i class="fas fa-sign-in-alt"></i> Get My Picture</button>
 
             <div id="error-message" class="error-message">
-                <i class="fas fa-exclamation-circle"></i> Invalid index number or password. Please try again.
+                <i class="fas fa-exclamation-circle"></i> Invalid Student Registration number or password. Please try again.
             </div>
 
             <div class="info-box">
-                <p><i class="fas fa-info-circle"></i> Enter your Index Number and Password to retrieve your profile picture.</p>
+                <p><i class="fas fa-info-circle"></i> Enter your Student Registration Number and Password to retrieve your profile picture.</p>
             </div>
         </div>
     </div>
@@ -55,8 +55,8 @@ include "header.php";
         <a id="download-link" class="download-btn" href="#" download>
             <i class="fas fa-download"></i> Download Picture
         </a>
-        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Login</button>
+        <button class="back-btn " onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Login</button>
     </div>
 </div>
 
-<?php include "footer.php";  ?>
+<?php include "assets/includes/footer1.php";  ?>
