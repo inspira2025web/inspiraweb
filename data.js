@@ -12,6 +12,6 @@ const studentData = [
   { 
     "regNumber": "ASP/202/003", 
     "name": "A.B.C. Nama", 
-    "certificateId": "fas003" 
+    "certificateId": "fas004" 
   },
 ];
